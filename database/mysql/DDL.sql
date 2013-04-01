@@ -1,0 +1,97 @@
+CREATE  TABLE `zhuzi123`.`OPERATORS` (
+  `OPER_ID` BIGINT(20) NOT NULL ,
+  `OPER_NAME` VARCHAR(45) NOT NULL ,
+  `PASSWORD` VARCHAR(45) NOT NULL ,
+  `IS_VALID` INT NULL ,
+  `REGISTER_TIME` DATETIME NOT NULL ,
+  `LOGIN_TIME` DATETIME NULL ,
+  `BELONG_model` VARCHAR(45) NULL ,
+  `MOBILE_PHONE` VARCHAR(45) NULL ,
+  `FIRST_EMAIL` VARCHAR(45) NULL ,
+  `SECOND_EMAIL` VARCHAR(45) NULL ,
+  PRIMARY KEY (`OPER_ID`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE `zhuzi123`.`role` (
+  `ROLE_ID` INT NOT NULL ,
+  `ROLE_NAME` VARCHAR(45) NOT NULL ,
+  `DESCRIPTION` VARCHAR(45) NULL ,
+  `CREATE_TIME` DATETIME NULL ,
+  `IS_VALID` INT NULL ,
+  `ORDERNUMBER` INT NULL ,
+  PRIMARY KEY (`ROLE_ID`) )
+
+ALTER TABLE `zhuzi123`.`role` CHANGE COLUMN `ROLE_ID` `ROLE_ID` VARCHAR(45) NOT NULL  , ADD COLUMN `id` INT(11) NOT NULL  FIRST 
+, DROP PRIMARY KEY 
+, ADD PRIMARY KEY (`id`) ;
+
+ALTER TABLE `zhuzi123`.`role` DROP COLUMN `ORDERNUMBER` , DROP COLUMN `IS_VALID` ;
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE `zhuzi123`.`OPER_PRIVILEGE` (
+  `PRIVILEGE_ID` INT NOT NULL ,
+  `PRIVILEGE_NAME` VARCHAR(45) NULL ,
+  `DESCRIPTION` VARCHAR(45) NULL ,
+  PRIMARY KEY (`PRIVILEGE_ID`) )
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE  TABLE `zhuzi123`.`role_privs` (
+  `ROLE_ID` INT NULL ,
+  `PRIVILEGE_ID` INT NULL )
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE  TABLE `zhuzi123`.`user_role` (
+  `user_id` BIGINT(20) NOT NULL ,
+  `role_id` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`user_id`) )
+  
+ALTER TABLE `zhuzi123`.`user_role` ADD COLUMN `user_role_id` VARCHAR(45) NOT NULL  FIRST 
+, DROP PRIMARY KEY 
+, ADD PRIMARY KEY (`user_role_id`) ;
+
+ALTER TABLE `zhuzi123`.`user_role` CHANGE COLUMN `user_role_id` `id` INT(11) NOT NULL  ;
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE  TABLE `zhuzi123`.`permission` (
+  `permission_id` VARCHAR(45) NOT NULL ,
+  `permission_name` VARCHAR(45) NULL ,
+  `permission_note` VARCHAR(45) NULL ,
+  PRIMARY KEY (`permission_id`) )
+
+ALTER TABLE `zhuzi123`.`permission` ADD COLUMN `id` INT(11) NOT NULL  FIRST 
+, DROP PRIMARY KEY 
+, ADD PRIMARY KEY (`id`) ;
+
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE  TABLE `zhuzi123`.`role_permission` (
+  `role_permission_id` VARCHAR(45) NOT NULL ,
+  `role_id` VARCHAR(45) NULL ,
+  `permission_id` VARCHAR(45) NULL ,
+  `role_permission_note` VARCHAR(45) NULL ,
+  PRIMARY KEY (`role_permission_id`) )
+
+ALTER TABLE `zhuzi123`.`role_permission` DROP COLUMN `role_permission_id` , CHANGE COLUMN `role_id` `role_id` VARCHAR(45) NOT NULL  , CHANGE COLUMN `permission_id` `permission_id` VARCHAR(45) NOT NULL  , ADD COLUMN `id` INT(11) NOT NULL AUTO_INCREMENT  FIRST 
+, DROP PRIMARY KEY 
+, ADD PRIMARY KEY (`id`) ;
+ENGINE = InnoDB
+
+DEFAULT CHARACTER SET = utf8;
+
+
+ALTER TABLE `zhuzi123`.`user` ADD COLUMN `mobile_phone` VARCHAR(45) NULL  AFTER `email` , ADD COLUMN `create_time` DATETIME NULL  AFTER `mobile_phone` ;
+ALTER TABLE `zhuzi123`.`user` CHANGE COLUMN `username` `username` VARCHAR(50) NOT NULL  , CHANGE COLUMN `password` `password` VARCHAR(50) NOT NULL  ;
+

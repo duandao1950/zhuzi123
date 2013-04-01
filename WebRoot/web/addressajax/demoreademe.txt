@@ -1,0 +1,16 @@
+address采用的是常规struts2的逻辑操作，功能包括：增删改查，多附件上传，下载，Excel导出分页标签，select标签，多附件上传标签
+addressAjax采用Jquery方式重写BaseAjaxAction，功能保持不变
+实现此demo需要涉及的文件如下：
+1.JSP:zhuzi123\WebRoot\web\addressajax\address.jsp
+引用如下内容
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/jquery.bigpage.js"></script>
+<script type="text/javascript" src="js/web/address.js"></script>
+<link type="text/css" rel="stylesheet" href="css/bigpage.css" >
+select标签，多附件上传标签，ajax分页标签
+2.zhuzi123\WebRoot\js\web\address.js 该JS文件主要用户前端逻辑判断，定义table需要展示的属性，操作行为等
+3.zhuzi123\src\com\struts\actions\AddressAjaxAction.java 注意父类的BaseAjaxAction的封装
+4.zhuzi123\src\config\struts\struts_address_ajax.xml
+5.zhuzi123\src\config\hibernate\Address.hbm.xml
+6.zhuzi123\src\com\hibernate\beans\Address.java
+7.zhuzi123\WebRoot\js\ui\jquery.ui.dialog.js

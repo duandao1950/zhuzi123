@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Aug 14 18:57:22 CST 2007                         -->
+<hibernate-mapping package="com.hibernate.beans">
+	<class name="Roles" table="oper_role">
+	    <id name="roleId" type="java.lang.Integer"> 
+            <column name="role_id" precision="22" scale="0" /> 
+            <generator class="sequence"> 
+            	<param name="sequence">ROLES_SEQUENCE</param> 
+            </generator> 
+        </id>
+		<property name="roleName" column="role_name" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="createTime" column="create_time" type="java.util.Date" />
+		<property name="isValid" column="is_valid" type="string" />
+		<property name="orderNumber" column="ordernumber" type="java.lang.Integer"/>
+	</class>
+</hibernate-mapping>

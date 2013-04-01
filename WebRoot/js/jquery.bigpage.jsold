@@ -1,0 +1,550 @@
+/**
+ * jquery ajax分页插件
+ * 实现功能：
+ * 1、一次性把数据加载到页面或客户端浏览器内存，在页面进行分页。
+ * 2、使用jquery的ajax每次从服务器取数据分页。
+ * $(tableName).bigPage({ajaxData:{url:"data.action",params:{},batch:true},pageSize:7,cssWidgets:["appendToTable","bgColor","eventColor"],callback:function(){
+ * 		alert(1);
+ *	}});
+ */
+(function($) {
+	$.extend({bigPage: new function(){
+		/*默认的参数，可以传入参数覆盖默认值。
+		 * ajaxData: url:后台去数据的地址；params：参数;batch：是否一次性加载数据。
+		 * data:初始化数据。可以不使用ajaxData，把一次性数据传入data进行页面分页。支持传入数组或字符串(字符串支持编码)。
+		 * pageSize:每页的大小.
+		 * toPage:当前页码.
+		 * callback：分页完成后继续的后续工作。
+		 * strData：如果传入的是字符串，则字符串之间的分隔符、是否编码进行设定。
+		 * cssWidgets：使用的渲染组件。默认定义了一些组件，用户可以自定义组件注入cssWidgets数组中。 
+		 */
+		this.defaults ={ajaxData:{url:"",params:{},batch:false},data: [], pageSize : 2,toPage : 1,callback:callBack_,strData:{unescape:false,separatorTR:String.fromCharCode(2),separatorTD:String.fromCharCode(1)},cssWidgets:[]};
+		this.updateDefaults = {ajaxData:{url:"",curentPageKey:"",params:{},batch:false},data: [],toPage : 1};
+		var cssWidgets = [];
+		//扩张Array的push()方法，使数组内的数据不重复。
+		Array.prototype.pushEx = function(obj){
+			var a = true;
+		    for (var i = 0; i < this.length; i++) {
+		    	if (this[i].id.toLowerCase() == obj.id.toLowerCase()) {
+		    		this[i] = obj;
+		    		a = false;
+		    		break;		
+		    	}
+		    }
+		    if(a){
+		    	this.push(obj);
+		    }	
+			return this.length;
+		}
+		//分页的对象
+		this.construct = function(args){
+			var $table = window.bigPage = this;
+			var config = {totalRecord:0,pageNumber:0};
+			//将用户自定义的参数，覆盖默认值
+			$.extend(config, $.bigPage.defaults, args);
+			if(typeof(config.strData.separatorTR) == "undefined"){
+					config.strData.separatorTR = String.fromCharCode(2);
+			}
+			if(typeof(config.strData.separatorTD) == "undefined"){
+					config.strData.separatorTD = String.fromCharCode(1);
+			}	
+
+			//第一页
+    	    this.firstPage = function(){
+    	        if (!$.bigPage.isNull($("#toPageText").val())){
+    	        	document.getElementById("toPageText").value = "";
+    	        }
+    	    	if(config.toPage == 1){
+    	    		return this;
+    	    	}
+    	    	config.toPage = 1;
+    	    	applyBuildTable();
+    	    	//document.getElementById("lastA").disabled = false;
+				return this;
+			};
+			
+			//上一页
+			this.prevPage = function(){
+				if (!$.bigPage.isNull($("#toPageText").val())){
+    	        	document.getElementById("toPageText").value = "";
+    	        }
+				if(config.toPage <= 1){
+					return this;
+				}
+				var curentPagePre = config.toPage --;
+				applyBuildTable();
+				//document.getElementById("lastA").disabled = false;
+				return this;
+			};
+			//下一页
+			this.nextPage = function(){
+				if (!$.bigPage.isNull($("#toPageText").val())){
+    	        	document.getElementById("toPageText").value = "";
+    	        }
+				if(config.toPage >= config.pageNumber){
+					return this ;
+				}
+				var curentPageNext = config.toPage ++;
+				applyBuildTable();
+				//document.getElementById("lastA").disabled = false;
+				return this;
+			};
+			//最后一页
+			this.lastPage = function(){
+				if (!$.bigPage.isNull($("#toPageText").val())){
+    	        	document.getElementById("toPageText").value = "";
+    	        }
+				if(config.toPage == config.pageNumber){
+					return this;
+				}
+				config.toPage = config.pageNumber;
+				applyBuildTable();
+				//document.getElementById("nextA").disabled = true;
+				//document.getElementById("nextA").href = "#";
+				//document.getElementById("lastA").disabled = true;
+				//document.getElementById("lastA").href = "#";
+				return this;
+			};
+			//跳转到指定页
+    	    this.skipPage = function(toPage_){
+    	        if(isNaN(toPage_) || toPage_.indexOf(".")!=-1){
+    	        	alert(" Integer only");
+    	        	return;
+    	        }
+    	        
+            	var numberValue = Number(toPage_);
+            	with(config){
+            		toPage = isNaN(numberValue) ? 1 : numberValue;
+            		
+            		if(toPage < 1 || toPage > pageNumber){
+	    	        	alert(" Please type a page number from 1 to " + pageNumber);
+	    	        	return;
+	    	        }
+    	         	
+            		if(toPage < 1 || toPage > pageNumber){
+            			toPage = toPage < 1? 1 : pageNumber;
+            		}
+            	}
+            	applyBuildTable();
+				return this;
+			};			
+            //得到分页的数据
+            this.getSubData = function(){
+            	if(config.ajaxData.batch){
+            		return config.data;
+            	}
+            	var totalRecord = config.totalRecord;
+            	if(totalRecord <= 0){
+            		return [];
+            	}
+            	var startRow = (config.toPage - 1) * config.pageSize;
+            	var endRow = config.toPage * config.pageSize;
+            	if(startRow > totalRecord){
+            		return [];
+            	}
+            	if(endRow > totalRecord){
+            		endRow = totalRecord;
+            	}
+            	return config.data.slice(startRow,endRow)
+            };
+            //总记录数
+            this.totalRecord = function(){
+            	return config.totalRecord;
+            };
+            //总页数
+            this.pageNumber = function(){
+            	return config.pageNumber;
+            };
+            //当前页
+            this.toPage = function(){
+            	return config.toPage;
+            };
+            //总记录数计算函数
+			function pageNumberFun(totalRecord,pageSize){
+				var pageNumber = parseInt(totalRecord / pageSize);
+				if(totalRecord % pageSize != 0){
+					pageNumber += 1;
+				}
+				return isNaN(pageNumber)? 0 : pageNumber;
+			}; 
+			//初始化config
+			function initConfig(totalRecord_,need){
+				if(!need)return;
+				var data_ = [];
+				for(var i= 0;i<config.data.length;i++){
+					var cellValues = convertData(config.data[i],config.strData.separatorTD);
+					data_.push(cellValues);
+				}
+				config.data = data_;
+				with(config){
+					if(typeof(totalRecord_)!= "undefined"){
+						totalRecord = totalRecord_;
+					}else{
+						totalRecord =  data.length;
+					}
+					if(toPage < 1){
+						toPage = 1;
+					}
+					if(pageSize < 1){
+						pageSize = 50;
+					}
+					pageNumber = pageNumberFun(totalRecord,pageSize);
+				}
+			}
+			//将字符串数据转换为数组数据
+			function convertData(originalData,separator){
+				if(!$.bigPage.isArray(originalData)){
+					var dataStr = $.trim(String(originalData));
+					if(config.strData.unescape){
+						dataStr = unescape(dataStr)
+					}
+					originalData = dataStr.split(separator);
+				}
+				return originalData;
+			}
+			
+			//将数据展现到页面
+			function applyBuildTable(needInitConfig){
+				config.data = convertData(config.data,config.strData.separatorTR);
+				var ajaxData = config.ajaxData;
+				if(!$.bigPage.isNull(ajaxData.url)){
+					if(!$.bigPage.isObject(ajaxData.params)){
+						ajaxData.params = {};
+					}
+					//翻页编辑时候定位到当前页
+					if (!this.isNull(ajaxData.curentPageKey)){
+						config.toPage = ajaxData.curentPageKey;
+					}
+					$.extend(ajaxData.params,{toPage:config.toPage,pageSize:config.pageSize});
+					$.ajax({type: "POST",url: config.ajaxData.url,data:ajaxData.params,dataType:"json",
+						"success": function(result){
+							if(result.data == null){
+								return;
+							}
+							var data_ = convertData(result.data,config.strData.separatorTR);
+
+							if(ajaxData.batch){
+								config.data = data_;
+								initConfig(result.totalRecord,needInitConfig);
+							}else{
+								config.data = config.data.concat(data_);
+								initConfig(undefined,needInitConfig);
+							}
+							buildTable();
+					    }
+					});
+					ajaxData.curentPageKey = "";
+				}else{
+					initConfig(undefined,needInitConfig);
+					buildTable();
+				}
+			}
+			
+			function buildTable(){
+				config.callback($table);
+				applyCssWidget($table,config);				
+			}
+			//更新config值，即重新初始化参数
+			$(this).bind("update",function(event,data){
+				$.extend(config,$.bigPage.updateDefaults,data);
+				/*if(isObject(data)){
+					var ds = data.ajaxData.params;
+					for(var prop in ds){   
+					    alert(prop+":"+ds[prop]);
+					}
+				}*/
+				applyBuildTable(true);
+			});
+			
+			applyBuildTable(true);
+           	return this;
+		};
+		
+		this.escapeHtml = function(str) { 	
+			if(this.isNull(str)){
+				return   "";
+			} 
+			return str.replace(/\'/g,'&acute;').replace(/\"/g,'&quot;');
+		}
+		
+		this.isNull = function(obj){
+			if(obj == null || $.trim(obj) == "" || typeof(obj) == "undefined"){
+				return true;
+			}
+			return false;
+		}
+		
+		this.isArray = function(obj){
+			if(Object.prototype.toString.call(obj) == "[object Array]"){
+				return true;
+			}
+			return false;
+		}
+		this.isObject = function(obj){
+			if(Object.prototype.toString.call(obj) == "[object Object]"){
+				return true;
+			}
+			return false;
+		}
+		
+		this.toJSON = function (text) {
+        try {
+       		return eval('(' + text + ')');
+        } catch (e) {
+       		return false;
+        }
+       }
+		
+		this.addClass = function(obj,className,con){
+			if(con){
+				$(obj).addClass(className);
+			}else{
+				$(obj).removeClass(className);
+			}
+		}
+		//向CssWidget数组中添加渲染组件，会覆盖已有的组件。
+		this.addCssWidget = function(cssWidget){
+			cssWidgets.pushEx(cssWidget)
+            return this;
+		}
+		
+		//根据id从CssWidget中取得组件
+        function getCssWidgetById(name) {
+        	if($.bigPage.isNull(name)){
+        		return false;
+        	}
+            var l = cssWidgets.length;
+            for (var i = 0; i < l; i++) {
+                if (cssWidgets[i].id.toLowerCase() == name.toLowerCase()) {
+                    return cssWidgets[i];
+                }
+            }
+            return false;
+        }
+        //把渲染组件应用到页面的样式上
+        function applyCssWidget($table,config){
+        	var applyCssWidget = config.cssWidgets;
+        	if(applyCssWidget.length <= 0){
+        		cssWidgets[0].format($table,config);
+        	}else{
+        		for(var i=0;i<applyCssWidget.length;i++){
+        			var cw = getCssWidgetById(applyCssWidget[i]);
+        			if(cw){
+        				cw.format($table,config);
+        			}
+        		}
+        	}
+        }
+		//默认的callback函数
+		function callBack_($table){
+
+		}
+		
+	}});
+	
+	$.fn.extend({bigPage:$.bigPage.construct});
+	
+	$.bigPage.addCssWidget({
+		id:"appendToTable",
+		format :function($table,config){
+			var subData = $table.getSubData();
+			var $tBody = $($table[0].tBodies[0]);
+			$tBody.empty();
+			for(var i=0;i<subData.length;i++){
+				var cellVaues = subData[i];
+				var trStr = "";
+				var isJsonTag = false;
+				if($.bigPage.toJSON(cellVaues) == false){
+				    trStr = "<tr><td colspan='"+(subData.length-1)+"' align='center'><font color='red'>当前页已经不存在任何数据!</font></tr></td>";
+				    isJsonTag = true;
+				}else{
+					cellVaues = $.bigPage.toJSON(cellVaues);
+					//此处根据不同的逻辑定制数据
+					//trStr = returnHTMLObject(cellVaues);
+					trStr = $.GetHtmlPlugin.returnHTMLObject(cellVaues); 
+				}
+				if (!$.bigPage.isNull(trStr)){
+					$tBody.append(trStr);
+					if(isJsonTag){
+						break;
+					}
+					//分页默认隐藏,有数据即显示
+					try{
+						//document.all.pageFix.style.display = "block";
+					}catch(e){}
+				}
+			}
+		}
+	});
+
+	$.bigPage.addCssWidget({
+		id:"eventColor",
+		format :function($table,config){
+			var prevACss = config.toPage > 1?"page-prev":"page-start";
+			var nextACss = config.toPage < config.pageNumber?"page-next":"page-end";
+			$("#firstA").removeClass().addClass(prevACss);
+			$("#prevA").removeClass().addClass(prevACss);
+			$("#nextA").removeClass().addClass(nextACss);
+			$("#lastA").removeClass().addClass(nextACss);
+		}
+	});	
+	
+	$.bigPage.addCssWidget({
+		id:"eventColor2",
+		format :function($table,config){
+			config.toPage > 1?$("#prevA").show():$("#prevA").hide();
+			config.toPage < config.pageNumber?$("#nextA").show():$("#nextA").hide();
+			
+			var maxCount = 9;
+			var currentOption = config.toPage;
+			var endOption = currentOption + parseInt(maxCount/2);
+			if(endOption > config.pageNumber){
+				endOption =  config.pageNumber;
+			}
+			var beginOption = endOption - maxCount;
+			if(beginOption <= 0){
+				beginOption = 1;
+			}			
+			$("table td[name=pageListTD]").remove();
+			var tds = "";
+			for(var i=beginOption;i<=endOption;i++){
+				if(currentOption == i){
+					tds += "<td name='pageListTD'><span>[" + i + "]</span></td>";
+				}else{
+					tds += "<td name='pageListTD'><a href='#' onclick='javascript:skipPage(" + i + ")' >[" + i + "]</a></td>"
+				}
+			}
+			$("#nextPageTD").before(tds);
+		}
+	});	
+	
+})(jQuery);
+
+function clearInput(){
+	for (var i = 0; i< formInput.length; i++){
+		if (!this.isNull(document.getElementById(formInput[i]))){
+			document.getElementById(formInput[i]).value = "";
+		}
+	}
+	
+	for (var i = 0; i< formHiddenInput.length; i++){
+		if (!this.isNull(document.getElementById(formHiddenInput[i]))){
+			document.getElementById(formHiddenInput[i]).value = "";
+		}
+	}
+	
+	if (!this.isNull(document.getElementById("filepath"))){
+		document.getElementById("filepath").value = " ";
+	}
+}
+
+function deleteAjax(id){
+	if (this.isNull(url_action.url_del)){
+    	alert("未指定删除需要的url_del逻辑!");
+    	return;
+    }
+    if (!confirm("请确认是否进行删除!")){
+    	return;
+    }
+ 	$.ajax({ 
+      url: url_action.url_del, 
+      type:'post', //数据发送方式 
+      dataType:'text', //接受数据格式 
+      data : {
+  		id : id
+	  },
+      cache: false, 
+      error:function(){
+          alert( "not lived!");
+      },
+      success: function(text){
+          $("."+id+"A"+" .delete").parents("."+id+"A").animate({ opacity: 'hide' }, "slow");
+          //加载表格,此处区分于默认的表格加载,需要传递当前页,以定位用户当前的编辑操作
+          bigPage.trigger("update",{ajaxData:{url:url_action.url_list,curentPageKey:$("#curentPageKey").val(),params:{keyword:""},batch:true}});
+      }
+    });
+}
+
+function setInputValue(text){
+	var jsonObject = this.toJSON(text);
+   	if (this.isNull(jsonObject)){
+   	    alert("数据为空,无法为表格赋值!");
+   	    return;
+   	}
+
+	for (var i = 0; i< formInput.length; i++){
+	    if (!this.isNull(document.getElementById(formInput[i]))){
+	    	document.getElementById(formInput[i]).value = this.isNullToString(jsonObject[formInput[i]]);
+	    }
+	}
+
+	for (var i = 0; i< formHiddenInput.length; i++){
+	    if (!this.isNull(document.getElementById(formHiddenInput[i]))){
+	    	document.getElementById(formHiddenInput[i]).value = this.isNullToString(jsonObject[formHiddenInput[i]]);
+	    }
+	}
+}
+
+function editAjax(id){
+    if (this.isNull(url_action.url_edit)){
+    	alert("未指定编辑需要的url_edit逻辑!");
+    	return;
+    }
+    
+    if (!confirm("请确认是否进行修改!")){
+    	return;
+    }
+	$.ajax({
+	    url : url_action.url_edit,  //后台处理程序      
+	    type:'post',    //数据发送方式      
+	    dataType:'text',   //接受数据格式      
+	    data : {
+	        id : id
+	    },//要传递的数据；就是上面序列化的值      
+	    success:function(text){
+	    	$( "#dialog-form" ).dialog( "open" );
+	    	if (text != null){
+	    	    //填充属性
+		    	setInputValue(text);
+	    	}
+	    }
+	});
+}
+
+//公共:导出当前页
+function exportPage(){
+   window.location.href = "export_excel_ajax.action?exportResult=exportResult&start="+$("#curentPageKey").val();
+}
+
+//如果用ajax下载,struts2返回的文件流将无法获取到页面,提示操作下载
+//此处用户ajax校验返回文件的当前状态,用户window.location.href来处理操作下载窗口
+function downLoadFile(fileName){
+	if (this.isNull(url_action.url_dowload)){
+    	alert("未指定编辑需要的url_dowload逻辑!");
+    	return;
+    }
+	$.ajax({
+	    url : url_action.url_dowload,  //后台处理程序      
+	    type:'post',    //数据发送方式      
+	    dataType:'text',   //接受数据格式      
+	    data : {
+	        fileName : fileName
+	    },//要传递的数据；就是上面序列化的值      
+	    success:function(text){
+	    	if (text.indexOf("ERROR") != -1){
+	    	    //下载失败,附件不存在提示信息
+		    	alert(text);
+		    	//jAlert(text, '附件下载提示');
+	    	}else{
+	    		window.location.href = url_action.url_dowload + "?fileName="+fileName;
+	    	}
+	    }
+    });
+}
+
+function showTipDiv(id){
+	var objStr = "#info_"+id;
+	$(objStr).mouseover(function(){$(objStr + " ul").show();});
+	$(objStr).mouseout(function(){$(objStr + " ul").hide();});
+}
+

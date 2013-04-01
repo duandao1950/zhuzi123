@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- dao bean -->
+	<bean id="roleDAO" class="com.hibernate.dao.RoleDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="roleBo"
+		class="com.hibernate.bo.RoleBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="roleDao">
+			<ref bean="roleDAO" />
+		</property>
+	</bean>
+		
+	<!-- 定义DAO 
+	<bean id="userDAO" class="com.hibernate.dao.UserDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean> -->
+
+	<!-- 定义DAO代理 -->
+	<bean id="roleDAOProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref local="roleBo" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>	
+
+	<!-- 控制层 bean 
+	<bean id="login" class="com.struts.actions.LoginAction" scope="prototype">
+	<property name="userBo">
+		<ref local="userBo"/>
+	</property>
+	<property name="operBo">
+		<ref bean="OperatorDAOProxy"/>
+	</property>
+	</bean>-->
+	
+</beans>

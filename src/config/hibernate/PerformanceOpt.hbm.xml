@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hibernate.beans">
+    <class name="PerformanceOpt" table="inf_performance_optimize">
+    	<composite-id>   
+    		<key-property name="staffId" column="staff_id" length="20"></key-property>
+    		<key-property name="month" column="in_month" length="6"></key-property>
+    	</composite-id>
+        <property name="staffName" column="staff_name" length="64"/>
+        <property name="workAttendence" column="work_attendence" length="4" type="java.lang.Integer"/>
+		<property name="layPBC" column="lay_pbc" length="4" type="java.lang.Integer"/>
+        <property name="writeLog" column="write_log" length="4" type="java.lang.Integer"/>
+        <property name="regularMeeting" column="regular_meeting" length="4" type="java.lang.Integer"/>
+        <property name="site" column="sites" length="4" type="java.lang.Integer"/>
+        <property name="siteBak" column="sites_bak" length="4" type="java.lang.Integer"/>
+        <property name="problemCounts" column="problems_counts" length="4" type="java.lang.Integer"/>
+        <property name="problemSolve" column="solve_problems" length="4" type="java.lang.Integer"/>
+        <property name="coding" column="coding" length="4" type="java.lang.Integer"/>
+        <property name="praiseLetter" column="praise_letter" length="4" type="java.lang.Integer"/>
+        <property name="custComplain" column="cust_complain" length="4" type="java.lang.Integer"/>
+        <property name="siteComplain" column="site_complain" length="4" type="java.lang.Integer"/>
+        <property name="custAppraise" column="cust_appraise" length="4" type="java.lang.Integer"/>
+        <property name="training" column="training" length="4" type="java.lang.Integer"/>
+        <property name="other" column="other" length="4" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

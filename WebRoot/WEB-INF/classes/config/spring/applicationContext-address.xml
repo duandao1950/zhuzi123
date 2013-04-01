@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- dao bean -->
+	<bean id="addressDAO" class="com.hibernate.dao.AddressDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="addressBo" class="com.hibernate.bo.AddressBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="addressDAO">
+			<ref bean="addressDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="address" class="com.struts.actions.AddressAction"
+		scope="prototype">
+		<property name="addressBo">
+			<ref local="addressBo" />
+		</property>
+	</bean>
+</beans>

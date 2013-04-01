@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Aug 14 18:57:22 CST 2007                         -->
+<hibernate-mapping package="com.hibernate.beans">
+	<class name="ContractProject" table="contract_project">
+		<id name="id" type="integer">
+			<column name="id" precision="22" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">CONTRACT_PROJECT_SEQUENCE</param>
+			</generator>
+		</id>
+		
+		<property name="contractNo" column="contract_no" type="java.lang.String" />
+		<property name="projectNo" column="project_no" type="java.lang.String" />
+		<property name="projectName" column="project_name" type="java.lang.String" />
+		<property name="assignDate" column="assign_date" type="java.sql.Date" />
+		<property name="openDate" column="open_date" type="java.sql.Date" />
+		<property name="planStartDate" column="plan_start_date" type="java.sql.Date" />
+		<property name="planEndDate" column="plan_end_date" type="java.sql.Date" />
+		<property name="realStartDate" column="real_start_date" type="java.sql.Date" />
+		<property name="realEndDate" column="real_end_date" type="java.sql.Date" />
+		<property name="ourIntfPerson" column="our_intf_person" type="java.lang.String" />
+		<property name="otherIntfPerson" column="other_intf_person" type="java.lang.String" />
+		<property name="contractCountPerson" column="contract_count_person" type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>

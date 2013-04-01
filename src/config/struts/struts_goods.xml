@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="goods" namespace="/" extends="json-default">
+	    <global-results>
+			<result name="index">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="operatorResult">web/common/operatorResult.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+		<action name="goods_add" class="com.struts.actions.GoodsAction" method="add">
+			<result type="json" name="success">
+			</result>
+		</action>
+		<action name="goods_delete" class="com.struts.actions.GoodsAction" method="delete">
+			<result type="json" name="success"></result>
+		</action>
+		<action name="goods_modify" class="com.struts.actions.GoodsAction" method="modify">
+			<result type="json" name="success"/>
+		</action>
+		<action name="goods_list" class="com.struts.actions.GoodsAction" method="All">
+			<result type="json" name="success"/>
+		</action>
+		<action name="goods_index" class="com.struts.actions.GoodsAction" method="goodsIndex">
+			<result name="goods_index">/index.jsp</result>
+		</action>
+	</package>
+</struts>

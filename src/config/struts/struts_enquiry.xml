@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="com.struts.contractprojectaction" extends="struts-default">
+		<global-results>
+			<result name="index">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="insertSuccess">web/common/insertSuccess.jsp</result>
+    		<result name="deleteSuccess">web/common/deleteSuccess.jsp</result>
+    		<result name="updateSuccess">web/common/updateSuccess.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<!-- 合同项目信息模块 -->
+		<action name="contractproject_back"
+			class="com.struts.actions.ContractProjectAction" method="back">
+			<result name="list" type="redirectAction">
+				contractproject_list
+			</result>
+		</action>
+		
+		<action name="contract_project_query"
+			class="com.struts.actions.ContractProjectAction" method="query">
+			<result name="query">web/contractproject/contractproject_query.jsp</result>
+		</action>
+		
+		<action name="contractproject_list"
+			class="com.struts.actions.ContractProjectAction" method="list">
+			<result name="list">web/contractproject/contractproject.jsp</result>
+		</action>
+		
+		<action name="contractproject_add"
+			class="com.struts.actions.ContractProjectAction" method="add">
+			<result name="add">web/contractproject/contractproject_add.jsp</result>
+		</action>
+		
+		
+		<action name="contractproject_delete"
+			class="com.struts.actions.ContractProjectAction" method="delete">
+			<result name="list" type="redirectAction">
+				contractproject_list
+			</result>
+		</action>
+		
+		
+		
+		<action name="contractproject_edit"
+			class="com.struts.actions.ContractProjectAction" method="edit">
+			<result name="edit">web/contractproject/contractproject_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				contractproject_list
+			</result>
+		</action>
+		
+		<action name="contractproject_update"
+			class="com.struts.actions.ContractProjectAction" method="update">
+			<result name="list" type="redirectAction">
+				contractproject_list
+			</result>
+		</action>
+		
+		<action name="contractproject_insert"
+			class="com.struts.actions.ContractProjectAction" method="insert">
+			<result name="list" type="redirectAction">
+				contractproject_list
+			</result>
+		</action>
+		
+		<!-- 真实项目信息模块 -->
+		<action name="realproject_back"
+			class="com.struts.actions.RealProjectAction" method="back">
+			<result name="list" type="redirectAction">
+				realproject_list
+			</result>
+		</action>
+		
+		<action name="real_project_query"
+			class="com.struts.actions.RealProjectAction" method="query">
+			<result name="query">web/realproject/realproject_query.jsp</result>
+		</action>
+		
+		<action name="realproject_list"
+			class="com.struts.actions.RealProjectAction" method="list">
+			<result name="list">web/realproject/realproject.jsp</result>
+		</action>
+		
+		<action name="realproject_add"
+			class="com.struts.actions.RealProjectAction" method="add">
+			<result name="add">web/realproject/realproject_add.jsp</result>
+		</action>
+		
+		
+		<action name="realproject_delete"
+			class="com.struts.actions.RealProjectAction" method="delete">
+			<result name="list" type="redirectAction">
+				realproject_list
+			</result>
+		</action>
+		
+		
+		
+		<action name="realproject_edit"
+			class="com.struts.actions.RealProjectAction" method="edit">
+			<result name="edit">web/realproject/realproject_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				realproject_list
+			</result>
+		</action>
+		
+		<action name="realproject_update"
+			class="com.struts.actions.RealProjectAction" method="update">
+			<result name="list" type="redirectAction">
+				realproject_list
+			</result>
+		</action>
+		
+		<action name="realproject_insert"
+			class="com.struts.actions.RealProjectAction" method="insert">
+			<result name="list" type="redirectAction">
+				realproject_list
+			</result>
+		</action>
+		
+		
+		
+		<!-- 员工资产信息模块 -->
+		<action name="asset_back"
+			class="com.struts.actions.AssetAction" method="back">
+			<result name="list" type="redirectAction">
+				asset_list
+			</result>
+		</action>
+		
+		<action name="asset_query"
+			class="com.struts.actions.AssetAction" method="query">
+			<result name="query">web/asset/asset_query.jsp</result>
+		</action>
+		
+		<action name="asset_list"
+			class="com.struts.actions.AssetAction" method="list">
+			<result name="list">web/asset/asset.jsp</result>
+		</action>
+		
+		<action name="asset_add"
+			class="com.struts.actions.AssetAction" method="add">
+			<result name="add">web/asset/asset_add.jsp</result>
+		</action>
+		
+		
+		<action name="asset_delete"
+			class="com.struts.actions.AssetAction" method="delete">
+			<result name="list" type="redirectAction">
+				asset_list
+			</result>
+		</action>
+		
+		<action name="asset_edit"
+			class="com.struts.actions.AssetAction" method="edit">
+			<result name="edit">web/asset/asset_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				asset_list
+			</result>
+		</action>
+		
+		<action name="asset_update"
+			class="com.struts.actions.AssetAction" method="update">
+			<result name="list" type="redirectAction">
+				asset_list
+			</result>
+		</action>
+		
+		<action name="asset_insert"
+			class="com.struts.actions.AssetAction" method="insert">
+			<result name="list" type="redirectAction">
+				asset_list
+			</result>
+		</action>
+		
+	</package>
+</struts>

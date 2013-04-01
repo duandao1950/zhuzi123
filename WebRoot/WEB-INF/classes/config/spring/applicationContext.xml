@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- 导入数据源文件 -->
+    <import resource="/applicationContext-dataSource.xml"/> 
+    <import resource="/applicationContext-shiro.xml"/>
+    <import resource="/applicationContext-role.xml"/>
+    <!-- 导入管理员模块文件 -->
+   <!--
+    <import resource="/applicationContext_users.xml"/> -->
+    <import resource="/applicationContext-address.xml"/>
+    <import resource="/applicationContext-operators.xml"/>
+    <import resource="/applicationContext-logger.xml"/> 
+    <import resource="/applicationContext-staffMgr.xml"/> 
+    <import resource="/applicationContext-enquiry.xml"/> 
+    <import resource="/applicationContext-job.xml"/> 
+    
+</beans>

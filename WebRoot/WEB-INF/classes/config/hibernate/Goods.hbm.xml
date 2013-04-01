@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Thu Aug 23 16:46:04 CST 2007                         -->
+<hibernate-mapping package="com.hibernate.beans">
+    <class name="Goods" table="goods">
+        <id name="id" type="java.lang.Integer"> 
+            <column name="id" precision="22" scale="0" /> 
+            <generator class="sequence"> 
+            	<param name="sequence">GOODS_SEQUENCE</param> 
+            </generator> 
+        </id> 
+        
+        <property name="name" column="NAME" type="java.lang.String"  not-null="true" />
+        <property name="stand" column="STAND" type="java.lang.String"  not-null="true" />
+        <property name="money" column="MONEY" type="java.lang.Integer" />
+        <property name="leavings" column="LEAVINGS" type="java.lang.Integer" />
+        <property name="orders" column="ORDERS" type="java.lang.Integer" />
+    </class>
+</hibernate-mapping>

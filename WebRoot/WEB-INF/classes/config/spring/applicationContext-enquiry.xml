@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!-- 合同项目信息模块 -->
+    <!-- dao bean -->
+	<bean id="contractProjectDAO" class="com.hibernate.dao.ContractProjectDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="contractProjectBo" class="com.hibernate.bo.ContractProjectBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="contractProjectDAO">
+			<ref bean="contractProjectDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="contractProject" class="com.struts.actions.ContractProjectAction"
+		scope="prototype">
+		<property name="contractProjectBo">
+			<ref local="contractProjectBo" />
+		</property>
+	</bean>
+	
+<!-- 真实项目信息模块 -->
+    <!-- dao bean -->
+    <bean id="realProjectDAO" class="com.hibernate.dao.RealProjectDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="realProjectBo" class="com.hibernate.bo.RealProjectBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="realProjectDAO">
+			<ref bean="realProjectDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="realProject" class="com.struts.actions.RealProjectAction"
+		scope="prototype">
+		<property name="realProjectBo">
+			<ref local="realProjectBo" />
+		</property>
+	</bean>
+
+<!-- 员工资产信息模块 -->
+    <!-- dao bean -->
+	<bean id="assetDAO" class="com.hibernate.dao.AssetDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="assetBo" class="com.hibernate.bo.AssetBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="assetDAO">
+			<ref bean="assetDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="asset" class="com.struts.actions.AssetAction"
+		scope="prototype">
+		<property name="assetBo">
+			<ref local="assetBo" />
+		</property>
+	</bean>
+
+</beans>

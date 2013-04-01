@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"/>
+		<property name="loginUrl" value="/login"></property>
+		<property name="successUrl" value="/login/loginSuccessFull"></property>
+		<property name="unauthorizedUrl" value="/login/unauthorized"></property>
+		<property name="filterChainDefinitions">
+			<value>
+				/home*=anon
+				/=anon
+				/logout=logout
+				/role/**=roles[admin]
+				/permission/**=perms[permssion:look]
+				/**=authc
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 单realm应用 如果有多个realm 使用 realms 属性代替 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="sampleRealm"></property>
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+	<!--  
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"></bean>
+	-->
+	
+	<!-- 用户授权信息Cache -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+	<!--
+	<bean id="sampleRealm" class="com.shiro.SampleRealm">
+		<property name="roleBo">
+			<ref bean="roleBo"/>
+		</property>
+	</bean>
+	-->
+	<bean id="sampleRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="authenticationQuery">
+			<value>
+				select password from user where user_name=?
+			</value>
+		</property>
+		<property name="userRolesQuery">
+			<value>
+				select a.role_name from role a,user_role b,user c
+				where a.role_id=b.role_id and b.user_id=c.id and c.user_name=?
+			</value>
+		</property>
+		<property name="permissionsQuery">
+			<value>
+				select b.permission_name from role t 
+				left join role_permission a on t.role_id=a.role_id 
+				left join permission b on a.permission_id=b.permission_id where t.role_name=?
+			</value>
+		</property>
+		<property name="permissionsLookupEnabled" value="true"></property>
+		<property name="saltStyle" value="NO_SALT"></property>
+		
+	</bean>
+	<!--  
+	<property name="credentialsMatcher" ref="hashedCredentialsMatcher"></property>
+	<bean id="hashedCredentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="MD5"></property>
+		<property name="storedCredentialsHexEncoded" value="false"></property>
+		<property name="hashIterations" value="1"></property>
+	</bean>
+	-->
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	 
+	 <!-- AOP式方法级权限检查  -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" 
+	depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"></property>
+	</bean>
+	<!-- 
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="excludedExceptions">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">
+					/unauthorized
+				</prop>
+				<prop key="org.apache.shiro.authz.UnauthenticatedException">
+					/unauthorized
+				</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+</beans>

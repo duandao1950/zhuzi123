@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.beans">
+ <class name="Role" table="inf_role">
+  <id length="8" name="roleId">
+	   <column name="role_id"/>
+       <generator class="sequence"> 
+       	<param name="sequence">role_seq</param> 
+       </generator> 	   
+  </id>
+  <property column="role_name" generated="never" lazy="false"
+   length="128" name="roleName"/>
+  
+  <property generated="never" lazy="false" length="128" name="description"/>
+  
+  <property column="create_time" generated="never" lazy="false"
+   name="createTime" type="java.sql.Timestamp"/>
+  
+  <property column="oper_id" generated="never" lazy="false" length="10"
+   name="createOperId"/>
+   
+   <set name="privleges" table="inf_role_privs" cascade="save-update">
+   		<key column="role_id"/>
+   		<many-to-many class="com.hibernate.beans.Menu" column="privilege_id"/>
+   </set>
+   
+ </class>
+</hibernate-mapping>

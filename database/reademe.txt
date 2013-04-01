@@ -1,0 +1,16 @@
+
+1.用myeclipse的import直接将工程导入，工程就搭建好了
+
+2.修改数据连接：zhuzi123\src\config\spring\applicationContext_dataSource.xml
+
+---3.菜单添加:zhuzi123\WebRoot\decorators\frame.jsp
+
+4.工具功能应用详细参考：通讯录模块的设计
+
+5.请大家将oralce的数据库脚本归档在：zhuzi123_oracle.sql
+
+6.配置：myeclipse + JDK5 + tomcat6.0
+
+7.访问 http://localhost:8080/zhuzi123/login.jsp
+
+8.struts2 + spring + hibernate + (mysql or oracle) + tomcat6.0

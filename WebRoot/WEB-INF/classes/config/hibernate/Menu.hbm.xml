@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.beans">
+ <class name="Menu" table="INF_PRIVILEGE">
+  <id length="8" name="privilegeId">
+   		<column name="PRIVILEGE_ID"/>
+   		<generator class="assigned"/>
+  </id>
+  <property column="PRIVILEGE_NAME" generated="never" lazy="false"
+   length="128" name="privilegeName"/>
+  
+  <property generated="never" lazy="false" length="64" name="description" not-null="true"/>
+  
+  <property column="PORDER" generated="never" lazy="false" length="5"
+   name="privilegeOrder"/>
+  
+  <property column="PARENT_PORDER" generated="never" lazy="false" length="5"
+   name="parentPOrder" not-null="true"/>
+  
+  <property column="url" generated="never" lazy="false" length="256"
+   name="Url" not-null="true"/>
+  
+  <set name="roles" table="inf_role_privs" inverse="true" cascade="save-update">
+  		<key column="privilege_id"/>
+  		<many-to-many class="com.hibernate.beans.Role" column="role_id"/>
+  </set>   
+ </class>
+</hibernate-mapping>

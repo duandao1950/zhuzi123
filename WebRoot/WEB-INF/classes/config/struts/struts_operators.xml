@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+   <package name="operators" extends="struts-default">
+	<!-- 进入管理员登陆界面 -->
+	<!-- 注入到spring bean 中的action类型不需要写全路径,只标明注入的ID即可 -->
+	<action name="login" class="com.struts.actions.LoginAction" method="login">
+		<result name="success">/welcome.jsp</result>
+		<result name="failure">/login.jsp</result>
+	</action>
+	
+	<action name="welcome" class="com.struts.actions.LoginAction" method="welcome">
+		<result name="success">/welcome.jsp</result>
+	</action>
+	
+	<action name="index">
+		<result name="success">/login.jsp</result>
+	</action>
+
+	<action name="logout" class="com.struts.actions.LogoutAction">
+		<result name="logout">/login.jsp</result>
+	</action>
+
+	<action name="register_user" class="com.struts.actions.RegisterAction" method="registerOperators">
+		<result name="success">/login.jsp</result>
+		<result name="input">/register.jsp</result>
+		<!--  
+		<result name="invalid.token">/register.jsp</result>
+	    <interceptor-ref name="token"></interceptor-ref>
+	    <interceptor-ref name="defaultStack"></interceptor-ref>-->
+	</action>
+	
+	<action name="register_init" class="com.struts.actions.RegisterAction" method="init">
+		<result name="input">/register.jsp</result>
+	</action>
+   </package>
+</struts>

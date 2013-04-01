@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Aug 14 18:57:22 CST 2007                         -->
+<hibernate-mapping package="com.hibernate.beans">
+	<class name="OperatorRoles" table="oper_roles_relation">
+	    <id name="operRoleId" type="java.lang.Integer"> 
+            <column name="oper_roles_id" precision="22" scale="0" /> 
+            <generator class="sequence"> 
+            	<param name="sequence">OPER_ROLES_SEQUENCE</param> 
+            </generator>
+        </id>
+        <property name="operId" column="oper_id" type="string" />
+        <property name="roleId" column="role_id" type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>

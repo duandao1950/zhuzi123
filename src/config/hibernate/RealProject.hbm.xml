@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Tue Aug 14 18:57:22 CST 2007                         -->
+<hibernate-mapping package="com.hibernate.beans">
+	<class name="RealProject" table="inf_real_project">
+		<id name="id" type="integer">
+			<column name="id" precision="22" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">REAL_PROJECT_SEQUENCE</param>
+			</generator>
+		</id>
+		
+		<property name="projectNo" column="project_no" type="java.lang.String" />
+		<property name="projectVersion" column="project_version" type="java.lang.String" />
+		<property name="projectName" column="project_name" type="java.lang.String" />
+		<property name="projectVersionName" column="project_version_name" type="java.lang.String" />
+		<property name="startDate" column="start_date" type="java.sql.Date" />
+		<property name="endDate" column="end_date" type="java.sql.Date" />
+		<property name="persons" column="persons" type="java.lang.Integer" />
+		<property name="remark" column="remark" type="java.lang.String" />
+	</class>
+</hibernate-mapping>

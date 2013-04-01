@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- spring定时任务的配置 -->  
+    <bean class="com.spring.job.MyTime" id="myTime"/>  
+    
+    <!-- 基础的配置   相关类的注入 -->  
+    <bean class="org.springframework.scheduling.quartz.JobDetailBean" id="MyTimeSpringJob">  
+        <property name="jobClass" value="com.spring.job.UpdateTime"/>  <!-- value中配置的是我自己写的UpdateTime类  name就是spring的jobClass -->  
+        <property name="jobDataAsMap">            <!-- 当定时任务中需要注入别的bean的时候，就可以在这里注入，我里面输入了一个MyTime类 -->  
+            <map>  
+                <entry key="myTime" value-ref="myTime"/>  
+            </map>  
+        </property>  
+    </bean>  
+    <!-- 相关的时间配置 -->  
+    <bean class="org.springframework.scheduling.quartz.SimpleTriggerBean" id="MyTimesimpleTriggerBean">  
+        <property name="jobDetail" ref="MyTimeSpringJob"/>   <!-- 给MyTimeSpringJob配置时间信息，name的jobDetail是spring内部需要注入的名字 -->  
+         <property name="repeatInterval" value="1000"/>       <!--相隔1000毫秒执行一次 -->  
+          <property name="startDelay" value="5000"/>          <!--tomcat或者jboss启动5000毫秒后开始执行任务 -->  
+    </bean>  
+     <!--   
+         当前注释的内容配置的功能很强大，还可以配置星期几，哪一天，那一年，或者那一日的那一秒都是可以配置的  
+         当前配置的是:每个周的星期天23：59：50     这个顺序是倒序配置的  
+         value中的内容：  
+         第6位：的1代表星期天，在国外星期天才是每个周的开始！  
+        第5位： *代表所有月的星期天  
+        第4位：？代表也没有具体到某日的星期天  
+        第3位：23代表23点，注意：采用24小时  
+        第2位：59代表分钟  
+        第1位：50代表秒  
+    <bean class="org.springframework.scheduling.quartz.CronTriggerBean">  
+        <property name="jobDetail" ref="MyTimeSpringJob"/>  
+         <property name="cronExpression" value="50 59 23 ? * 1"/>   
+           
+    </bean>  
+          -->  
+    <!-- ****************启动定时任务***************** -->  
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="triggers">  
+            <list>  
+            <ref bean="MyTimesimpleTriggerBean"/>  
+            </list>  
+        </property>  
+    </bean> 
+</beans>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="com.struts.workrecordaction" extends="struts-default">
+		<global-results>
+			<result name="index">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="insertSuccess">web/success/insertSuccess.jsp</result>
+    		<result name="deleteSuccess">web/success/deleteSuccess.jsp</result>
+    		<result name="updateSuccess">web/success/updateSuccess.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<!-- 员工信息模块 -->
+		<action name="staff_back"
+			class="com.struts.actions.StaffAction" method="back">
+			<result name="list" type="redirectAction">
+				staff_list
+			</result>
+		</action>
+		
+		<action name="staff_query"
+			class="com.struts.actions.StaffAction" method="query">
+			<result name="query">web/staff/staff_query.jsp</result>
+		</action>
+		
+		<action name="staff_list"
+			class="com.struts.actions.StaffAction" method="list">
+			<result name="list">web/staff/staff.jsp</result>
+		</action>
+		
+		<action name="staff_show"
+			class="com.struts.actions.StaffAction" method="toShow">
+			<result name="toshow">web/staff/staff_chose.jsp</result>
+		</action>
+		
+		<action name="staff_show_ajax"
+			class="com.struts.actions.StaffAction" method="toShowAjax">
+			<result name="toshow">web/staff/staff_chose.jsp</result>
+		</action>
+		
+		<action name="staff_toqry"
+			class="com.struts.actions.StaffAction" method="toQry">
+			<result name="toqry">web/staff/staff_qry.jsp</result>
+		</action>
+		
+		<action name="staff_add"
+			class="com.struts.actions.StaffAction" method="add">
+			<result name="add">web/staff/staff_add.jsp</result>
+		</action>
+		
+		
+		<action name="staff_delete"
+			class="com.struts.actions.StaffAction" method="delete">
+			<result name="list" type="redirectAction">
+				staff_list
+			</result>
+		</action>
+		
+		
+		
+		<action name="staff_edit"
+			class="com.struts.actions.StaffAction" method="edit">
+			<result name="edit">web/staff/staff_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				staff_list
+			</result>
+		</action>
+		
+		<action name="staff_update"
+			class="com.struts.actions.StaffAction" method="update">
+			<result name="list" type="redirectAction">
+				staff_list
+			</result>
+		</action>
+		
+		<action name="staff_insert"
+			class="com.struts.actions.StaffAction" method="insert">
+			<result name="list" type="redirectAction">
+				staff_list
+			</result>
+		</action>
+		
+		
+		<!-- 考勤模块 -->
+		<action name="workrecord_back"
+			class="com.struts.actions.WorkRecordAction" method="back">
+			<result name="list" type="redirectAction">
+				workrecord_list
+			</result>
+		</action>
+		
+		<action name="work_record_query"
+			class="com.struts.actions.WorkRecordAction" method="query">
+			<result name="query">web/workrecord/workrecord_query.jsp</result>
+		</action>
+		
+		<action name="workrecord_list"
+			class="com.struts.actions.WorkRecordAction" method="list">
+			<result name="list">web/workrecord/workrecord.jsp</result>
+		</action>
+		
+		<action name="workrecord_add"
+			class="com.struts.actions.WorkRecordAction" method="add">
+			<result name="add">web/workrecord/workrecord_add.jsp</result>
+		</action>
+		
+		
+		<action name="workrecord_delete"
+			class="com.struts.actions.WorkRecordAction" method="delete">
+			<result name="list" type="redirectAction">
+				workrecord_list
+			</result>
+		</action>
+		
+		<action name="workrecord_edit"
+			class="com.struts.actions.WorkRecordAction" method="edit">
+			<result name="edit">web/workrecord/workrecord_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				workrecord_list
+			</result>
+		</action>
+		
+		<action name="workrecord_update"
+			class="com.struts.actions.WorkRecordAction" method="update">
+			<result name="list" type="redirectAction">
+				workrecord_list
+			</result>
+		</action>
+		
+		<action name="workrecord_insert"
+			class="com.struts.actions.WorkRecordAction" method="insert">
+			<result name="list" type="redirectAction">
+				workrecord_list
+			</result>
+		</action>
+		<!-- CRM组绩效考核模块 -->
+		<action name="perCRM_back"
+			class="com.struts.actions.PerformanceCRMAction" method="back">
+			<result name="list" type="redirectAction">
+				perCRM_list
+			</result>
+		</action>
+		
+		<action name="perCRM_query"
+			class="com.struts.actions.PerformanceCRMAction" method="query">
+			<result name="query">web/performance/percrm_query.jsp</result>
+		</action>
+		
+		<action name="perCRM_list"
+			class="com.struts.actions.PerformanceCRMAction" method="list">
+			<result name="list">web/performance/percrm.jsp</result>
+		</action>
+		
+		<action name="perCRM_add"
+			class="com.struts.actions.PerformanceCRMAction" method="add">
+			<result name="add">web/performance/percrm_add.jsp</result>
+		</action>
+		
+		
+		<action name="perCRM_delete"
+			class="com.struts.actions.PerformanceCRMAction" method="delete">
+			<result name="list" type="redirectAction">
+				perCRM_list
+			</result>
+		</action>
+		
+		<action name="perCRM_edit"
+			class="com.struts.actions.PerformanceCRMAction" method="edit">
+			<result name="edit">web/performance/percrm_edit.jsp</result>
+		</action>
+		
+		<action name="perCRM_update"
+			class="com.struts.actions.PerformanceCRMAction" method="update">
+			<result name="list" type="redirectAction">
+				perCRM_list
+			</result>
+		</action>
+		
+		<action name="perCRM_insert"
+			class="com.struts.actions.PerformanceCRMAction" method="insert">
+			<result name="list" type="redirectAction">
+				perCRM_list
+			</result>
+		</action>
+		
+		<!-- 维优员工绩效模块 -->
+		<action name="performanceOpt_back"
+			class="com.struts.actions.PerformanceOptAction" method="back">
+			<result name="list" type="redirectAction">
+				performanceOpt_list
+			</result>
+		</action>
+		
+		<action name="performanceOpt_query"
+			class="com.struts.actions.PerformanceOptAction" method="query">
+			<result name="init">web/performance/performanceOptinit.jsp</result>
+		</action>
+		
+		<action name="performanceOpt_list"
+			class="com.struts.actions.PerformanceOptAction" method="list">
+			<result name="list">web/performance/performanceOptlist.jsp</result>
+		</action>
+		
+		<action name="performanceOpt_add"
+			class="com.struts.actions.PerformanceOptAction" method="add">
+			<result name="add">web/performance/performanceOpt_add.jsp</result>
+		</action>
+		
+		
+		<action name="performanceOpt_delete"
+			class="com.struts.actions.PerformanceOptAction" method="delete">
+			<result name="list" type="redirectAction">
+				performanceOpt_list
+			</result>
+		</action>
+		
+		<action name="performanceOpt_edit"
+			class="com.struts.actions.PerformanceOptAction" method="edit">
+			<result name="edit">web/performance/performanceOpt_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				performanceOpt_list
+			</result>
+		</action>
+		
+		<action name="performanceOpt_update"
+			class="com.struts.actions.PerformanceOptAction" method="update">
+			<result name="list" type="redirectAction">
+				performanceOpt_list
+			</result>
+		</action>
+		
+		<action name="performanceOpt_insert"
+			class="com.struts.actions.PerformanceOptAction" method="insert">
+			<result name="list" type="redirectAction">performanceOpt_list</result>
+			<result name="add">web/performance/performanceOpt_add.jsp</result>
+		</action>
+	</package>
+</struts>

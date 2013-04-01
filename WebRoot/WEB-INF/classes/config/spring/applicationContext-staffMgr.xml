@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- 员工信息模块 -->
+	<!-- dao bean -->
+	<bean id="staffDAO" class="com.hibernate.dao.StaffDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="staffBo" class="com.hibernate.bo.StaffBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="staffDAO">
+			<ref bean="staffDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="staff" class="com.struts.actions.StaffAction"
+		scope="prototype">
+		<property name="staffBo">
+			<ref local="staffBo" />
+		</property>
+	</bean>
+	
+	<!-- 考勤信息模块 -->
+	<!-- dao bean -->
+	<bean id="workRecordDAO" class="com.hibernate.dao.WorkRecordDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="workRecordBo" class="com.hibernate.bo.WorkRecordBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="workRecordDAO">
+			<ref bean="workRecordDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="workRecord" class="com.struts.actions.WorkRecordAction"
+		scope="prototype">
+		<property name="workRecordBo">
+			<ref local="workRecordBo" />
+		</property>
+	</bean>
+	
+	
+	<!-- CRM组绩效考核模块 -->
+	<!-- dao bean -->
+	<bean id="perCRMDAO" class="com.hibernate.dao.PerformanceCRMDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="perCRMBo" class="com.hibernate.bo.PerformanceCRMBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="perCRMDAO">
+			<ref bean="perCRMDAO" />
+		</property>
+	</bean>
+
+	<!-- 控制层 bean -->
+	<bean id="perCRM" class="com.struts.actions.PerformanceCRMAction"
+		scope="prototype">
+		<property name="perCRMBo">
+			<ref local="perCRMBo" />
+		</property>
+	</bean>
+	<!-- 维优组绩效模块 -->
+	<bean id="pfoptDAO" class="com.hibernate.dao.PerformanceOptDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- bo bean  -->
+	<bean id="pfBo"
+		class="com.hibernate.bo.PerformanceOptBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="pfoptDao">
+			<ref bean="pfoptDAO" />
+		</property>
+	</bean>
+
+	<!-- 定义DAO代理 -->
+	<bean id="pfoptBoProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref local="pfBo" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>	
+
+	<bean id="performanceOpt" class="com.struts.actions.PerformanceOptAction" scope="prototype">
+		<property name="pfBo">
+			<ref bean="pfoptBoProxy"/>
+		</property>
+	</bean>	
+	
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hibernate.beans">
+    <class name="Staff" table="inf_staff">
+        <id name="staffId" type="java.lang.String"> 
+            <column name="staff_id" precision="22" scale="0" /> 
+        </id> 
+        <property name="staffName" column="staff_name" type="java.lang.String" />
+        <property name="skill" column="skill" type="java.lang.String" />
+        <property name="statusId" column="status_id" type="java.lang.Integer" />
+        <property name="tel1" column="tel1" type="java.lang.String" />
+        <property name="tel2" column="tel2" type="java.lang.String" />
+        <property name="email1" column="email1" type="java.lang.String" />
+        <property name="email2" column="email2" type="java.lang.String" />
+        <property name="enterComDate" column="enter_com_date" type="java.sql.Date" />
+        <property name="exitComDate" column="exit_com_date" type="java.sql.Date" />
+        <property name="groupName" column="group_name" type="java.lang.String" />
+        <property name="workYears" column="work_years" type="java.lang.Integer" />
+        <property name="remark" column="remark" type="java.lang.String" />
+        
+    </class>
+</hibernate-mapping>

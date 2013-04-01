@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.beans">
+ <class name="Operator" table="inf_oper">
+  <id length="10" name="operId">
+   <column name="oper_id"/>
+   <generator class="assigned"/>
+  </id>
+  <property column="OPER_NAME" generated="never" lazy="false"
+   length="128" name="operName"/>
+  
+  <property generated="never" lazy="false" length="128" name="password" not-null="true"/>
+  
+  <property column="LOGIN_TIME" generated="never" lazy="false"
+   name="loginTime" type="java.sql.Timestamp"/>
+  
+  <property column="IS_VALID" generated="never" lazy="false" length="1"
+   name="valid" not-null="true"/>
+   
+   <many-to-one name="role" 
+   				column="role_id"
+   				class="com.hibernate.beans.Role"
+   				cascade="all"
+   				outer-join="true"/>
+ </class>
+</hibernate-mapping>

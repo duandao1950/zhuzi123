@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- dao bean 
+	<bean id="userDAO" class="com.hibernate.dao.UserDAO"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean> -->
+	<bean id="operDAO" class="com.hibernate.dao.OperatorDAO" abstract="false" lazy-init="default">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>	
+	<!-- bo bean  
+	<bean id="userBo"
+		class="com.hibernate.bo.UserBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="userDAO">
+			<ref bean="userDAO" />
+		</property>
+	</bean> -->
+	
+	<bean id="operBo" class="com.hibernate.bo.OperatorBo" abstract="false" lazy-init="default">
+		<property name="operDao">
+			<ref bean="operDAO"/>
+		</property>
+	</bean>
+	<!-- 定义DAO 
+	<bean id="userDAO" class="com.hibernate.dao.UserDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean> -->
+
+	<!-- 定义DAO代理 
+	<bean id="UserDAOProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref local="userDAO" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean> -->
+	<bean id="OperatorDAOProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref local="operBo" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>	
+
+	<!-- 控制层 bean -->
+	<bean id="login" class="com.struts.actions.LoginAction" scope="prototype">
+	<property name="userBo">
+		<ref local="userBo"/>
+	</property>
+	<property name="operBo">
+		<ref bean="OperatorDAOProxy"/>
+	</property>
+	</bean>
+	
+	<!-- 控制层 bean -->
+	<bean id="loginout" class="com.struts.actions.LogoutAction" scope="prototype">
+	<property name="userBo">
+	<ref local="userBo"/>
+	</property>
+	</bean>
+	
+	<!-- 控制层 bean -->
+	<bean id="register" class="com.struts.actions.RegisterAction" scope="prototype">
+	<property name="userBo">
+	<ref local="userBo"/>
+	</property>
+	</bean>
+	<!-- 定义Struts配置 
+	<bean name="/login" class="com.struts.actions.LoginAction">
+		<property name="userDAO">
+			<ref local="userDAO" />
+		</property>
+	</bean>-->
+	<bean id="menu" class="com.struts.actions.MenuAction" scope="prototype">
+		<property name="operBo">
+			<ref bean="OperatorDAOProxy"/>
+		</property>
+		<property name="roleBo">
+			<ref bean="roleDAOProxy"/>
+		</property>
+	</bean>
+
+</beans>

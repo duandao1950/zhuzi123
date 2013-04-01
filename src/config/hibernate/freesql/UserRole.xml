@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<sql-query name="select_users">
+	<return alias="s" class="com.hibernate.beans.User"/>
+	select {s.*} from users as s where s.id=:id
+</sql-query>
+
+<sql-query name="select_dic_key">
+	<return alias="s" class="com.hibernate.beans.DicKey"/>
+	select {s.*} from DIC_KEY as s where s.id=:id
+</sql-query>
+
+<sql-query name="select_dic_value">
+	<return alias="s" class="com.hibernate.beans.DicValue"/>
+	select {s.*} from DIC_VALUE as s where s.id=:id
+</sql-query>
+
+<sql-query name="select_dic_key_value">
+	<return-scalar column="b.value" type="string"/>
+	<!--  
+	<return alias="a" class="com.hibernate.beans.DicKey"/>
+    <return alias="b" class="com.hibernate.beans.DicValue"/>
+	<return alias="b" class="com.hibernate.beans.DicValue"/>
+	<return-scalar column="b.value" type="string"/>
+	<return alias="s" class="com.hibernate.beans.User">
+	 	<return-property name="username" column="value" />
+	</return>
+	-->
+	select b.value from DIC_KEY a,DIC_VALUE b 
+	where a.key=b.id and a.table_name='DIC_SEX' and a.id='S0001' and b.language=upper('zh')
+	order by a.ordernumber;
+</sql-query>
+</hibernate-mapping>

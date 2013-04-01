@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="address_ajax" namespace="/" extends="json-default">
+	    <global-results>
+			<result name="index">/login.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+		<action name="address_insert_ajax"
+			class="com.struts.actions.AddressAjaxAction" method="saveOrUpdateAjax">
+		</action>
+
+		<action name="address_delete_ajax"
+			class="com.struts.actions.AddressAjaxAction" method="deleteAjax">
+		</action>
+
+		<action name="address_edit_ajax"
+			class="com.struts.actions.AddressAjaxAction" method="editAjax">
+		</action>
+
+    	<action name="address_list_ajax" 
+    	    class="com.struts.actions.AddressAjaxAction" method="listAjax">
+        	<result type="json" >
+        		<param name="root">json</param>
+        	</result>
+        </action>
+        
+        <action name="export_excel_ajax"
+			class="com.struts.actions.AddressAjaxAction" method="exportExcelAjax">
+		</action>
+		
+        <action name="address_dowload_ajax"
+			class="com.struts.actions.AddressAjaxAction" method="downLoadFileAjax">
+		</action>
+		
+        <action name="address_init_ajax" 
+            class="com.struts.actions.AddressAjaxAction" method="listInitAjax">
+            <result name="success">web/addressajax/address.jsp</result>
+        </action>
+	</package>
+</struts>

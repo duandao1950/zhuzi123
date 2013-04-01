@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>jdbc:mysql://localhost:3306/zhuzi123?useUnicode=true&amp;characterEncoding=utf-8</value>
+		</property>
+		<property name="user">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+   <!--  配置数据源  
+   <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@127.0.0.1:1521:zhuzi123</value>
+		</property>
+		<property name="username">
+			<value>zhuzi123</value>
+		</property>
+		<property name="password">
+			<value>zhuzi123</value>
+		</property>
+	</bean>
+	-->
+    <!--
+    <bean>
+		<property name="dialect">
+			org.hibernate.dialect.Oracle9iDialect
+		</property>
+		<property name="connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:CMG
+		</property>
+		<property name="connection.username">CMG</property>
+		<property name="connection.password">CMG</property>
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="myeclipse.connection.profile">mysql5</property>
+		<property name="show_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">update</property>
+
+		首先说明我是使用c3p0连接池的方式 
+		<property name="connection.provider_class">
+			org.hibernate.connection.C3P0ConnectionProvider
+		</property>
+		最大连接数 
+		<property name="hibernate.c3p0.max_size">20</property>
+		最小连接数 
+		<property name="hibernate.c3p0.min_size">2</property>
+		获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 
+		<property name="hibernate.c3p0.timeout">5000</property>
+		最大的PreparedStatement的数量 
+		<property name="hibernate.c3p0.max_statements">100</property>
+		每隔1000秒检查连接池里的空闲连接 ，单位是秒
+		<property name="hibernate.c3p0.idle_test_period">1000</property>
+		当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 
+		<property name="hibernate.c3p0.acquire_increment">2</property>
+		每次都验证连接是否可用 
+		<property name="hibernate.c3p0.validate">true</property>
+	</bean>
+    -->
+
+	<!-- 配置Hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				
+				<value>config/hibernate/Address.hbm.xml</value>
+				<value>config/hibernate/Operators.hbm.xml</value>
+				<value>config/hibernate/Users.hbm.xml</value>
+				<value>config/hibernate/DicKey.hbm.xml</value>
+				<value>config/hibernate/DicValue.hbm.xml</value>
+				<value>config/hibernate/Author.hbm.xml</value>
+				<value>config/hibernate/Article.hbm.xml</value>
+				<!--  
+				
+				<value>config/hibernate/Goods.hbm.xml</value>
+				<value>config/hibernate/WorkRecord.hbm.xml</value>
+				<value>config/hibernate/Asset.hbm.xml</value>
+
+				
+				<value>config/hibernate/ContractProject.hbm.xml</value>
+				<value>config/hibernate/RealProject.hbm.xml</value>
+				<value>config/hibernate/Operator.hbm.xml</value>
+				<value>config/hibernate/Menu.hbm.xml</value>
+				<value>config/hibernate/Staff.hbm.xml</value>
+				<value>config/hibernate/Role.hbm.xml</value>
+
+				<value>config/hibernate/Roles.hbm.xml</value>
+				<value>config/hibernate/OperatorRoles.hbm.xml</value>
+				<value>config/hibernate/Privilege.hbm.xml</value>
+				<value>config/hibernate/RolePrivileges.hbm.xml</value>
+				<value>config/hibernate/Config.hbm.xml</value>
+			    <value>config/hibernate/PerformanceCRM.hbm.xml</value>
+				<value>config/hibernate/PerformanceOpt.hbm.xml</value>
+				-->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+			    
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<!-- 
+				<prop key="hibernate.dialect">
+				org.hibernate.dialect.Oracle9iDialect
+				</prop>
+				-->
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- 配置事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	 
+	<bean id="baseHibernateDAO" class="com.hibernate.dao.BaseHibernateDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="baseHibernateDAOProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref local="baseHibernateDAO" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<!--  
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>-->
+			</props>
+		</property>
+	</bean>
+	
+	<!-- bo bean  -->
+	<bean id="baseHibernateBo" class="com.hibernate.bo.BaseHibernateBo"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="baseHibernateDAO">
+			<ref bean="baseHibernateDAO" />
+		</property>
+	</bean>
+
+	<!-- 定义Struts配置：base 
+	<bean name="/base"
+		class="com.struts.actions.BaseAction">
+		<property name="baseHibernateBo">
+			<ref local="baseHibernateBo" />
+		</property>
+	</bean>-->
+	
+	<!-- 定义Struts配置：base -->
+	<bean name="/roles"
+		class="com.struts.actions.RolesAction">
+		<property name="baseHibernateBo">
+			<ref local="baseHibernateBo" />
+		</property>
+	</bean>
+	
+	<!-- 定义Struts配置：base -->
+	<bean name="/operator"
+		class="com.struts.actions.OperatorAction">
+		<property name="baseHibernateBo">
+			<ref local="baseHibernateBo" />
+		</property>
+	</bean>
+	
+	<!-- 定义Struts配置：base -->
+	<bean name="/privilege"
+		class="com.struts.actions.PrivilegeAction">
+		<property name="baseHibernateBo">
+			<ref local="baseHibernateBo" />
+		</property>
+	</bean>
+	
+	<!-- DAO -->
+	<bean id="baseSpringDAO"
+		class="com.hibernate.dao.BaseSpringDAO">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- DATA -->
+	<bean id="baseSpringBo"
+		class="com.hibernate.bo.BaseSpringBo">
+		<property name="baseSpringDAO" ref="baseSpringDAO"></property>
+	</bean>
+	
+	<!-- 定义Struts配置：base -->
+	<bean name="/login"
+		class="com.struts.actions.LoginAction">
+		<property name="baseSpringBo">
+			<ref local="baseSpringBo" />
+		</property>
+	</bean>
+	
+</beans>

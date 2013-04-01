@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color:#E2E9E8;">
+<font color="#e7fbe1">
+2222222222222</font>
+
+<font color="#FFFFFF">11111111111111111</font>
+</body>
+</html>
+
+<s:iterator value="beanList" id="staff">
+				<tr>
+				    <td>
+				    <s:radio list="#staff.staffId" name="staffRadio"></s:radio>
+				    </td>
+				    
+					<td>
+						<s:property value="staffId" />
+					</td>
+					<td>
+						<s:property value="staffName" />
+					</td>
+					<td>
+						<s:property value="skill" />
+					</td>
+					<td>
+						<s:property value="statusId" />
+					</td>
+					
+					<td>&nbsp;
+						<s:property value="groupName" />
+					</td>
+				</tr>
+			</s:iterator>
+			<%-- 分页 --%>
+		    <site:page name="page" action="workrecord_list.action" />
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+     <TR class="listtablebody">
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD></TD>
+		<TD>
+		<TD>
+		<TD>
+		<TD>
+		<TD>
+		</TD>
+		<TD>
+		</TD>
+		<TD>
+		</TD>
+		<TD>
+		</TD>
+		<TD>
+		</TD>
+	</TR>

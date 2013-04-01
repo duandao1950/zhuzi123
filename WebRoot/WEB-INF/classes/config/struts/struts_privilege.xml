@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="privilege" extends="struts-default">
+	    <global-results>
+			<result name="index">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="operatorResult">web/common/operatorResult.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+		<!-- 通讯录模块 -->
+		<action name="privilege_back"
+			class="com.struts.actions.PrivilegeAction" method="back">
+			<result name="list" type="redirectAction">
+				privilege_list
+			</result>
+		</action>
+
+		<action name="privilege_list"
+			class="com.struts.actions.PrivilegeAction" method="list">
+			<result name="list">web/privilege/privilege.jsp</result>
+		</action>
+		
+		<action name="exportExcel"
+			class="com.struts.actions.PrivilegeAction" method="exportExcel">
+		</action>
+
+		<action name="privilege_dowload"
+			class="com.struts.actions.PrivilegeAction" method="downLoadFile">
+			<!-- 设置文件名参数，由页面上传入 -->
+			<param name="filename"></param>
+			<result name="input">privilege_list</result>
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${filepath}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+
+		<action name="privilege_add"
+			class="com.struts.actions.PrivilegeAction" method="add">
+			<result name="add">web/privilege/privilege_add.jsp</result>
+			<result name="list" type="redirectAction">
+				privilege_list
+			</result>
+		</action>
+
+		<action name="privilege_insert"
+			class="com.struts.actions.PrivilegeAction" method="insert">
+			<result name="add">web/privilege/privilege_add.jsp</result>
+			<!-- 资料说明：
+			    1.
+			     如果我们在redirectAction result中使用动态参数就会出现如上异常,
+				这个bug在struts2.1.6中尚没有解决，bug出现的地方位于com.opensymphony.xwork2.ognl.OgnlUtil,
+				原因是Ognl试图在ServletActionResult中寻找一个叫id的属性，找不到就抛出了这个Ognl异常。
+				但是ServletActionResult最终还是能拿到这个动态参数，并且使用它来构造查询串。
+				这个对程序的执行结果没有影响，但服务器端总是打出这样的log,让人感觉很不舒服。或者我们可以选择改变struts2的log level来避免它！
+			    2.<interceptor-ref name="chain"/>此设置可以用于信息在多个action之间专递
+			<result name="list" type="chain">
+				<param name="actionName">privilege_list</param>
+				<param name="methodParamter">insert</param>
+			</result>
+			-->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,text/plain,application/x-visio,application/zip,
+					application/vnd.ms-excel,application/vnd.ms-word,application/vnd.ms-powerpoint
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			
+			<result name="input">web/privilege/privilege_add.jsp</result>
+		</action>
+
+		<action name="privilege_edit"
+			class="com.struts.actions.PrivilegeAction" method="edit">
+			<result name="edit">web/privilege/privilege_edit.jsp</result>
+			<result name="list" type="redirectAction">
+				privilege_list
+			</result>
+		</action>
+
+		<action name="privilege_update"
+			class="com.struts.actions.PrivilegeAction" method="update">
+			<result name="list" type="redirectAction">
+				<param name="actionName">privilege_list</param>
+			</result>
+			<!-- 
+			     在使用多附件上传标签的时候,注意如下：
+				1.页面引用 <%@ taglib uri="/WEB-INF/upload.tld" prefix="site"%>
+				2.form设置 <form action="privilege_update.action" method="post" enctype="multipart/form-data">
+				3.导入标签<site:upload/>
+				4.struts.xml中添加如下配置
+			-->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,text/plain,application/x-visio,application/zip,
+					application/vnd.ms-excel,application/vnd.ms-word,application/vnd.ms-powerpoint
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">web/privilege/privilege_edit.jsp</result>
+		</action>
+
+		<action name="privilege_delete"
+			class="com.struts.actions.PrivilegeAction" method="delete">
+			<result name="list" type="redirectAction">
+				privilege_list
+			</result>
+		</action>
+	</package>
+</struts>

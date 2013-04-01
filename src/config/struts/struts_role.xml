@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<package name="role" extends="struts-default">
+		<global-results>
+			<result name="index">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="insertSuccess">web/common/insertSuccess.jsp</result>
+    		<result name="deleteSuccess">web/common/deleteSuccess.jsp</result>
+    		<result name="updateSuccess">web/common/updateSuccess.jsp</result>
+			<result name="exceptionPage">/exceptionPage.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<!-- 通讯录模块 -->
+		<action name="role_back"
+			class="com.struts.actions.RoleAction" method="back">
+			<result name="list" type="redirectAction">rolelist</result>
+		</action>
+
+		<action name="rolelist"
+			class="com.struts.actions.RoleAction" method="list">
+			<result name="list">web/role/rolelist.jsp</result>
+		</action>
+		
+		<action name="roleinit"
+			class="com.struts.actions.RoleAction" method="init">
+			<result name="init">web/role/roleinit.jsp</result>
+		</action>		
+
+		<action name="addrole"
+			class="com.struts.actions.RoleAction" method="add">
+			<result name="add">web/role/roleadd.jsp</result>
+			<result name="list" type="redirectAction">operlist</result>
+		</action>
+
+		<action name="insertrole"
+			class="com.struts.actions.RoleAction" method="insert">
+			<result name="list" type="redirectAction">rolelist</result>
+			<result name="add">web/role/roleadd.jsp</result>
+			<!-- 资料说明：
+			    1.
+			     如果我们在redirectAction result中使用动态参数就会出现如上异常,
+				这个bug在struts2.1.6中尚没有解决，bug出现的地方位于com.opensymphony.xwork2.ognl.OgnlUtil,
+				原因是Ognl试图在ServletActionResult中寻找一个叫id的属性，找不到就抛出了这个Ognl异常。
+				但是ServletActionResult最终还是能拿到这个动态参数，并且使用它来构造查询串。
+				这个对程序的执行结果没有影响，但服务器端总是打出这样的log,让人感觉很不舒服。或者我们可以选择改变struts2的log level来避免它！
+			    2.<interceptor-ref name="chain"/>此设置可以用于信息在多个action之间专递
+			<result name="list" type="chain">
+				<param name="actionName">address_list</param>
+				<param name="methodParamter">insert</param>
+			</result>
+			-->
+			<!-- 
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,text/plain,application/x-visio,application/zip,
+					application/vnd.ms-excel,application/vnd.ms-word,application/vnd.ms-powerpoint
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			 -->
+			<result name="input">web/address/address_add.jsp</result>
+		</action>
+
+		<action name="role_edit"
+			class="com.struts.actions.RoleAction" method="edit">
+			<result name="edit">web/role/role_edit.jsp</result>
+			<result name="list" type="redirectAction">rolelist</result>
+		</action>
+
+		<action name="role_update"
+			class="com.struts.actions.RoleAction" method="update">
+			<result name="list" type="redirectAction">
+				<param name="actionName">rolelist</param>
+			</result>
+			<!-- 
+			     在使用多附件上传标签的时候,注意如下：
+				1.页面引用 <%@ taglib uri="/WEB-INF/upload.tld" prefix="site"%>
+				2.form设置 <form action="address_update.action" method="post" enctype="multipart/form-data">
+				3.导入标签<site:upload/>
+				4.struts.xml中添加如下配置
+			-->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,text/plain,application/x-visio,application/zip,
+					application/vnd.ms-excel,application/vnd.ms-word,application/vnd.ms-powerpoint
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">web/address/address_edit.jsp</result>
+		</action>
+
+		<action name="role_delete"
+			class="com.struts.actions.RoleAction" method="delete">
+			<result name="list" type="redirectAction">rolelist</result>
+		</action>
+	
+	</package>
+</struts>

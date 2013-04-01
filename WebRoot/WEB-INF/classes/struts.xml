@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+   <!-- 设置字符集 -->
+   <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+   <!-- 上传文件生成临时文件的目录 -->
+   <constant name="struts.multipart.saveDir" value="D:\"/>
+   <!-- 国际化资源文件 -->
+   <constant name="struts.custom.i18n.resources" value="message" ></constant>
+   
+   <!-- 以下是模块化逻辑 -->
+   <include file="/config/struts/struts_base.xml"/>
+   <include file="/config/struts/struts_users.xml"/>
+   <include file="/config/struts/struts_address.xml"/>
+   <include file="/config/struts/struts_article.xml"/>
+   <include file="/config/struts/struts_address_ajax.xml"/>
+   <include file="/config/struts/struts_goods.xml"/>
+   <include file="/config/struts/struts_operators.xml"/>
+   <include file="/config/struts/struts_roles.xml"/>
+   <include file="/config/struts/struts_privilege.xml"/>
+   <include file="/config/struts/struts_operator_manage.xml"/>
+   <include file="/config/struts/struts_staffMgr.xml"/>
+   <include file="/config/struts/struts_operator.xml"/>
+   <include file="/config/struts/struts_role.xml"/>
+   <include file="/config/struts/struts_enquiry.xml"/>
+   <include file="/config/report/report.xml"/>
+</struts>

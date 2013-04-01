@@ -1,0 +1,53 @@
+BODY {
+	FONT-FAMILY: "ËÎÌו"; FONT-SIZE: 10pt; LINE-HEIGHT: 10pt;
+}
+
+TD {
+	FONT-FAMILY: "ËÎÌו"; FONT-SIZE: 10pt;
+}
+
+ a:Link,a:Visited{padding:2px 1px 0 1px;color:#4b9898;text-decoration:none;LINE-HEIGHT: 15pt;}
+ a:Hover,a:Active{padding:2px 1px 0 1px;color:#FFFFFF;background:#739342;text-decoration:none;}
+
+hr {
+	filter:alpha(opacity=100,finishopacity=2,style=0);
+	height:3px;
+	color:#B6C9E7;
+}
+li {
+	color:#739342;
+	list-style-type: square;
+}
+
+.position {
+	background-color: #B6C9E7;
+	FONT-SIZE: 12pt
+}
+.tableheader {
+	background-color: B6C9E7;
+}
+.pager {
+	background-color: #E6E6E6;
+}
+.tablebody{
+	background-color: #E5EEF7;
+	text-align: right;
+}
+.buttontable{
+    text-align: right;
+}
+.listtablebody1{
+	background-color: #E5EEF7;
+	text-align: center;
+	border-right-width: 1 px;
+    border-left-width: 1 px;
+    border-top-width: 1 px;
+    border-bottom-width: 1 px;
+    border-color: #33ff33;
+    border-style: solid;
+}
+.listtablebody{
+background-color: #E5EEF7;
+text-align:center;
+}
+

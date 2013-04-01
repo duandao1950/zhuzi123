@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hibernate.beans">
+    <class name="Asset" table="inf_asset">
+        <id name="id" type="java.lang.Integer"> 
+            <column name="id" precision="22" scale="0" /> 
+            <generator class="sequence"> 
+            	<param name="sequence">ASSET_SEQUENCE</param> 
+            </generator> 
+        </id> 
+        <property name="staffId" column="staff_id" type="java.lang.String" /> 
+        <property name="deviceNo" column="device_no" type="java.lang.String" />
+        <property name="comDisplayNo" column="com_display_no" type="java.lang.String" />
+        <property name="comHostNo" column="com_host_no" type="java.lang.String" />
+        <property name="ipAddress" column="ip_address" type="java.lang.String" />
+        <property name="deviceAddress" column="device_address" type="java.lang.String" />
+        <property name="status" column="status" type="java.lang.String" />
+        <property name="remark" column="remark" type="java.lang.String" />
+    </class>
+</hibernate-mapping>
+
+

@@ -1,0 +1,81 @@
+package com.struts.actions;
+
+import java.util.List;
+
+
+import com.hibernate.beans.Address;
+import com.hibernate.bo.AddressBo;
+import com.opensymphony.xwork2.ActionSupport;
+
+@ParentPackage(value = "showcase")
+public class JsonTablebak extends ActionSupport {
+  protected AddressBo addressBo;
+  public AddressBo getAddressBo() {
+		return addressBo;
+	}
+
+	public void setAddressBo(AddressBo addressBo) {
+		this.addressBo = addressBo;
+	}
+  //Your result List
+  private List<Address>      gridModel;
+
+  //get how many rows we want to have into the grid - rowNum attribute in the grid
+  private Integer             rows             = 0;
+
+  //Get the requested page. By default grid sets this to 1.
+  private Integer             page             = 0;
+
+  // sorting order - asc or desc
+  private String              sord;
+
+  // get index row - i.e. user click to sort.
+  private String              sidx;
+
+  // Search Field
+  private String              searchField;
+
+  // The Search String
+  private String              searchString;
+
+  // he Search Operation ['eq','ne','lt','le','gt','ge','bw','bn','in','ni','ew','en','cn','nc']
+  private String              searchOper;
+
+  // Your Total Pages
+  private Integer             total            = 0;
+
+  // All Record
+  private Integer             records          = 0;
+
+  @Actions( {
+    @Action(value = "/jsontable", results = {
+      @Result(name = "success", type = "json")
+    })
+  })
+  
+  public String execute()
+  {
+
+    int to = (rows * page);
+    int from = to - rows;
+
+
+    //Count Rows (select count(*) from custumer)
+    records = addressBo.findTotalCount(Address.class);
+
+    //Your logic to search and select the required data.
+    //gridModel = addressBo.find(from, to);
+
+    //calculate the total pages for the query
+    total =(int) Math.ceil((double)records / (double)rows);
+
+    return SUCCESS;
+  }
+
+  public String getJSON()
+  {
+    return execute();
+  }
+
+  //Getters and Setters for Attributes
+}
