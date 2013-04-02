@@ -1,3 +1,4 @@
+//注意编码
 $(function() {
     $('#Tip').hide();
     var nowDate = new Date();
