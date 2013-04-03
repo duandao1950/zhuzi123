@@ -4,6 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/test.css">
+<link href="http://s0.hao123img.com/v3/mn/dk/ft/SS/OX/skin-color-green.merge.css" type="text/css" rel="stylesheet">
+<SCRIPT type="text/javascript" src="js/jquery-1.6.1.js"></SCRIPT>
+<script>
+function login(){
+	//$("#login-form").hide();javascript:void(0);
+	$("#login-div").show();
+}
+
+function logincolse(){
+    //$("#login-form").hide();javascript:void(0);
+	$("#login-div").hide();
+}
+</script>
 </head>
 <body class="skin-color-green">
 <div class="g_hf-bg layout-userbar">
@@ -35,7 +48,7 @@
 							<a class="g_hf-icon more">关注站长</a>
 						</li>
 						<li class="user">
-							<a target="_self" class="user-login" href="#">登录</a>
+							<a target="_self" class="user-login" href="javascript:;" onclick="login();">登录</a>
 						</li>
 					</ul>
 				</div>
@@ -370,5 +383,72 @@
 		</div>
 	</div>
 </div>
+
+<div id="login-div" class="popup popup-login" style="display: none; left: 355px; top: 295.5px;">
+  <div class="popup-head">
+	<a class="js_close" href="javascript:void(0);" onclick="logincolse();"></a><span class="js_title">用xx帐号登录</span>
+  </div>
+  <div class="login_left">
+  <div style="display: block;" class="err_holder" id="errHolder">请输入帐号</div>
+  <div id="login_holder">
+	  <div id="login_holder_1">
+		  <form class="pass_login_form" id="pass_login_form_0" action="#" target="pass_login_iframe_0" method="post" style="">
+			  <p class="pass_login_p pass_login_p_username" id="pass_login_p_username_0">
+				<label class="pass_login_label pass_login_label_username" id="pass_login_label_username_0" for="pass_login_username_0">帐　号</label>
+				<input class="pass_login_input pass_login_input_username login_input_err" id="pass_login_username_0" name="username" type="text">
+				<span class="pass_login_err" id="pass_login_username_0_err">请您输入帐号</span>
+				<span class="pass_login_tip" id="pass_login_username_0_tip"></span>
+			  </p>
+			  <p class="pass_login_p pass_login_p_password" id="pass_login_p_password_0">
+				<label class="pass_login_label pass_login_label_password" id="pass_login_label_password_0" for="pass_login_password_0">密　码</label>
+				<input class="pass_login_input pass_login_input_password" id="pass_login_password_0" name="password" type="password">
+				<span class="pass_login_err" id="pass_login_password_0_err"></span>
+				<span class="pass_login_tip" id="pass_login_password_0_tip"></span>
+			  </p>
+			  <p style="display: none;" class="pass_login_p pass_login_p_verifycode" id="pass_login_p_verifycode_0">
+				<label class="pass_login_label pass_login_label_verifycode" id="pass_login_label_verifycode_0" for="pass_login_verifycode_0">验证码</label>
+				<input class="pass_login_input pass_login_input_verifycode" id="pass_login_verifycode_0" name="verifycode" type="text">
+				<span class="pass_login_err" id="pass_login_verifycode_0_err"></span>
+				<span class="pass_login_tip" id="pass_login_verifycode_0_tip"></span>
+			  </p>
+			  <p style="display: none;" class="pass_login_p pass_login_p_img_verifycode" id="pass_login_p_img_verifycode_0">
+				<img src="https://passport.baidu.com/img/v2/small_blank.gif" class="pass_login_verifycode" id="pass_login_img_verifycode_0" alt="验证码图片" title="验证码图片">
+				<span class="pass_login_change_verifycode" id="pass_login_change_verifycode_0">看不清？</span>
+			  </p>
+			  <p class="pass_login_p" id="pass_login_p_generalerror_0">
+				<span class="pass_login_generalerror" id="pass_login_generalerror_0"></span>
+			  </p>
+			  <p class="pass_login_p pass_login_p_rem" id="pass_login_p_rem_0">
+				<input class="pass_login_input pass_login_input_rem" id="pass_login_rem_0" name="mem_pass" checked="checked" type="checkbox">
+				<label class="pass_login_label pass_login_label_rem" id="pass_login_label_rem_0" for="pass_login_rem_0">记住我的登录状态</label>
+			  </p>
+			  <p class="pass_login_p pass_login_p_des" id="pass_login_p_des_0">使用公用电脑请勿选择该项</p>
+			  <p class="pass_login_p pass_login_p_btn" id="pass_login_p_btn_0">
+				<input class="pass_login_input pass_login_input_submit" id="pass_login_input_submit_0" value="" type="button">
+			    <a href="#" class="pass_login_a_fgtpwd" id="pass_login_a_fgtpwd_0">忘记密码？</a>
+			  </p>
+		  </form>
+	  </div>
+	</div>
+ </div>
+ <div class="login_right">
+   <p class="reg_text">还没有xx帐号？</p>
+   <p class="reg_link">
+	 <a href="#" target="_blank" id="reg_btn"></a>
+   </p>
+   <p class="other_title">使用合作网站帐号登录</p>
+   <ul class="other_list">
+	  <li>
+		<a class="other_icon other_icon_qq" href="#">QQ帐号登录</a>
+	  </li>
+	  <li>
+		<a class="other_icon other_icon_sina" href="#">新浪微博帐号登录</a>
+	  </li>
+	  <li>
+		<a class="other_icon other_icon_renren" href="#">人人帐号登录</a>
+	  </li>
+   </ul>
+ </div>
+ </div>
 </body>
 </html>

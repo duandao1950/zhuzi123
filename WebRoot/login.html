@@ -4,22 +4,31 @@
   <title> New Document </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="http://s0.hao123img.com/v3/mn/dk/ft/SS/OX/skin-color-green.merge.css" type="text/css" rel="stylesheet">
-  <script src="/js/jquery-1.8.3.js"></script>
+  <SCRIPT type="text/javascript" src="js/jquery-1.6.1.js"></SCRIPT>
  </head>
 <script>
-	$(function() {
-		$("#login-form").show();
-		
-		function logincolse(){
-			//$("#login-form").hide();
-			$("#login-form").fadeOut("fast");
-		}
-	});
+	function login(divName){
+		//$("#login-form").hide();javascript:void(0);
+		$(divName).show();
+	}
+	
+	function logincolse(divName){
+		//$("#login-form").hide();javascript:void(0);
+		$(divName).hide();
+	}
+	
+	
+	function openWin(obj){
+	   obj.target="_blank";
+	   obj.href ="login.html";
+	   obj.click();
+	}
 </script>
  <body>
- <div id="login-form" class="popup popup-login" style="display: block; left: 355px; top: 295.5px;">
+ <p><a class="user-login" href="javascript:;" onclick="login('#login-div');">登录</a></p>
+ <div id="login-div" class="popup popup-login" style="display: none; left: 355px; top: 295.5px;">
   <div class="popup-head">
-	<a class="js_close" href="javascript:void(0);"></a><span class="js_title">用xx帐号登录</span>
+	<a class="js_close" href="javascript:;" onclick="logincolse('#login-div');"></a><span class="js_title">用xx帐号登录</span>
   </div>
   <div class="login_left">
   <div style="display: block;" class="err_holder" id="errHolder">请输入帐号</div>
