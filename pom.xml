@@ -247,6 +247,7 @@
 		<type>jar</type>
 		<scope>compile</scope>
 	</dependency>
+	<!--  
 	<dependency>
 		<groupId>net.sf.jasperreports</groupId>
 		<artifactId>jasperreports</artifactId>
@@ -254,6 +255,7 @@
 		<type>jar</type>
 		<scope>compile</scope>
 	</dependency>
+	-->
 	<dependency>
 		<groupId>com.google.code.gson</groupId>
 		<artifactId>gson</artifactId>
