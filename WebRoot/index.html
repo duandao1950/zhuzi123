@@ -3,10 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/test.css">
-<link href="http://s0.hao123img.com/v3/mn/dk/ft/SS/OX/skin-color-green.merge.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/sitestyle.css">
 <SCRIPT type="text/javascript" src="js/jquery-1.6.1.js"></SCRIPT>
 <script>
+$(function(){  
+	$(".g_clr .groups li").hover(function(){
+	  $(this).addClass('js_khover');},function(){$(this).removeClass('js_khover');}
+    ); 
+});  
+
 function login(){
 	//$("#login-form").hide();javascript:void(0);
 	$("#login-div").show();
@@ -18,355 +23,458 @@ function logincolse(){
 }
 </script>
 </head>
-<body class="skin-color-green">
+<body>
 <div class="g_hf-bg layout-userbar">
 	<div class="w960px layout-inner">
-		<div id="box-userbar" class="box-userbar">
-			<div id="userBar" class="w960px g_clr widget-userbar">
-				<div class="g_fl" style="min-width:470px">
-					<ul class="g_icon quik-menu big-home">
-						<li class="js_sethomeBox sethome-box">
-							<a class="js_setHome sethome g_red" onclick="return false" href="#">设为主页</a>&nbsp;&nbsp;&nbsp;
-							<a href="#" class="g_black">主页修复</a>
-							<span class="js_setFavorite" style="display:none">&nbsp;&nbsp;&nbsp;
-								<a href="#" class="g_black js_favorite">加入收藏</a>
-							</span>
-							<div class="hometip js_hometip" style="display:none">
-								<i class="arrow"></i>
-								<a href="#" class="js_tipmsg tipmsg">设为主页 &gt;&gt;</a>
-								<i class="js_tipclose tipclose"></i>
-							</div>
-						</li>
-					</ul>
-					<span class="calendar-box">
-						<a href="#" id="calendar" class="widget-calendar" title="点击查看万年历">x月x日 星期一（xx节）<span>21:06</span></a>
-					</span>
-				</div>
-				<div class="g_fr">
-					<ul class="quik-menu">
-						<li class="selfhood tip-box">
-							<a class="g_hf-icon more">关注站长</a>
-						</li>
-						<li class="user">
-							<a target="_self" class="user-login" href="javascript:;" onclick="login();">登录</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="layoutContainer" class="g_hf-bg layout-container">
-	<div class="layout-container-inner">
-		<div class="w960px layout-header">
-			<div id="header" class="box-inner-header">
-				<div class="widget-header">
-					<div class="g_fl">
-						<span class="box-logo" id="box-logo">
-							<a id="indexLogo" href="#" title="点击进入 xxxxx的空间">
-								<img src="#" height="68" width="186">
-							</a>
+		<div class="w960px g_clr widget-userbar">
+			<div class="g_fl" style="min-width:470px">
+				<ul class="quik-menu">
+					<li class="sethome-box">
+						<a class="sethome g_red" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('[url]http://www.zhuzi123.com[/url]');">设为主页</a>
+						<span>&nbsp;&nbsp;&nbsp;
+							<a href="http://www.hao123.com" target="_blank">加入收藏</a>
 						</span>
-					</div>
-					<div class="box-mail">
-						<div id="mail" class="g_clr widget-mail">
-							<form id="mailForm" class="js_mailForm" method="post" action="#">
-								<div class="widget-email-inner">
-									<p class="g_clr firstrow">
-										<span class="js_inputOuter fl box-mailinput">
-											<input id="mailUserName" class="js_userName mailusername">
-											<label style="display: inline;" for="mailUserName" class="wm-tip">邮箱帐号</label>
-										</span>
-										<span id="mailselect" class="js_select g_icon fl box-mailselect">
-											<label class="js_selectLabel g_icon mailselect">@163.com</label>
-										</span>
-									</p>
-									<p class="g_clr">
-										<span class="js_inputOuter fl box-mailinput">
-											<input id="mailPassWord" class="js_pwd emailpassword" type="password">
-											<label style="display: inline;" for="mailPassWord" class="wm-tip">邮箱密码</label>
-										</span>
-										<span id="mailParas" class="js_mailParas" style="display:none"></span>
-											<span class="box-mailsubmit">
-											<input class="g_icon mailsubmit" id="mailsubmit" value="登录" type="submit">
-										</span>
-									</p>
-								</div>
-							</form>
-					    </div>
-				   </div>
-				</div>
+					</li>
+				</ul>
+			</div>
+			<div class="g_fr">
+				<ul class="quik-menu">
+					<li class="selfhood">
+						<a class="g_hf-icon more" href="http://www.hao123.com" target="_blank">关注站长</a>
+					</li>
+					<li class="user">
+						<a target="_self" class="user-login" href="javascript:;" onclick="login();">登录</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div id="ipad-box" class="ipad-box"></div>
+<div class="w960px layout-header">
+	<div>
+		<span>
+			<a href="http://www.baidu.com/baidu?wd=" target="_blank">
+				<img src="#" height="68" width="186">
+			</a>
+		</span>
+	</div>
+</div>
+
 <div class="w960px layout-content g_clr">
-	<div class="layout-content-ct" id="layout-content">	
-		<div class="layout-famoussite" id="layout-famoussite">
-			<div id="box-site">
-				<div class="widget-site" id="site">
-				    <div class="js_site site site-normal">
-						<div style="display: block;" class="js_manage site-manage" title="添加网址"></div>
-						<ul class="js_bd site-bd">
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.qidian.com/" target="_blank">起点</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.readnovel.com/" target="_blank">小说阅读网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.xxsy.net/" target="_blank">潇湘书院</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.xs8.cn/" target="_blank">言情小说吧</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.zongheng.com/" target="_blank">纵横中文网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://book.hao123.com/index/" target="_blank">小说排行榜</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.jjwxc.net/" target="_blank">晋江文学</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://book.sina.com.cn/" target="_blank">新浪读书</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.hongxiu.com/" target="_blank">红袖添香</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.booksky.org/" target="_blank">快眼看书</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.sodu.org/" target="_blank">搜读Sodu</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.zhulang.com/" target="_blank">逐浪小说网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.17k.com/" target="_blank">17k小说网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.kanshu.com/" target="_blank">看书网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.cc222.com/" target="_blank">烟雨红尘</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.fmx.cn/" target="_blank">凤鸣轩小说</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.qdmm.com/" target="_blank">起点女生网</a>
-							</li>
-							<li class="js_site-item site-item site-item-normal ">
-								<a class="js_text" href="http://www.cuiweiju.com/" target="_blank">翠微居</a>
-							</li>
-						</ul>
-					 <div class="js_refresh site-refresh-w" style="display:none">
-						<div class="site-refresh">您的常用网址没有加载成功，请您<a class="js_refresh-button">重新加载</a></div>
-					 </div>
-					</div>
-				</div>
+	<div class="layout-content-ct">	
+		<div class="layout-famoussite">
+			<div class="widget-site">
+				<ul class="js_bd site-bd">
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.qidian.com/" target="_blank">起点</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.readnovel.com/" target="_blank">小说阅读网</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.xxsy.net/" target="_blank">潇湘书院</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.xs8.cn/" target="_blank">言情小说吧</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.zongheng.com/" target="_blank">纵横中文网</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://book.hao123.com/index/" target="_blank">小说排行榜</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.jjwxc.net/" target="_blank">晋江文学</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.hongxiu.com/" target="_blank">红袖添香</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.booksky.org/" target="_blank">快眼看书</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.sodu.org/" target="_blank">搜读Sodu</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.zhulang.com/" target="_blank">逐浪小说网</a>
+					</li>
+					<li class="js_site-item site-item site-item-normal">
+						<a class="js_text" href="http://www.17k.com/" target="_blank">17k小说网</a>
+					</li>
+				</ul>
 			</div>
-			<div id="box-famoussite" >	
-				<div class="widget-famoussite" >
-					<div class="wf-line"></div>
-					<div class="g_clr wf-inner last"><span><a href="http://www.nlc.gov.cn/" target="_blank">国家图书馆</a></span><span><a href="http://www.baidu.com/search/guoxue/dir/fenlei.html?wenxue" target="_blank">百度国学</a></span><span><a href="http://wenku.baidu.com/" target="_blank">百度文库</a></span><span><a href="http://www.docin.com/" target="_blank">豆丁文库</a></span><span><a href="http://shuku.mofcom.gov.cn/book/index.html?wenxue" target="_blank">公益书库</a></span><span><a href="http://ishare.iask.sina.com.cn/" target="_blank">新浪爱问共享</a></span></div>
-					<div class="g_clr wf-inner last"><span><a href="http://book.ifeng.com/" target="_blank">凤凰读书</a></span><span><a href="http://book.douban.com/" target="_blank">豆瓣读书</a></span><span><a href="http://book.qq.com/" target="_blank">腾讯读书</a></span><span><a href="http://book.163.com/?wenxue" target="_blank">网易读书</a></span><span><a href="http://book.sina.com.cn/?wenxue" target="_blank">新浪读书</a></span><span><a href="http://book.sohu.com/" target="_blank">搜狐读书</a></span></div>
-					<div class="g_clr wf-inner last"><span><a href="http://www.duzhe.com/" target="_blank">读者</a></span><span><a href="http://www.yilin.net.cn/" target="_blank">意林</a></span><span><a href="http://www.rongshuxia.com/" target="_blank">榕树下</a></span><span><a href="http://www.storychina.cn/" target="_blank">故事会</a></span><span><a href="http://www.wenxiu.com/" target="_blank">文秀网</a></span><span><a href="http://wind.yinsha.com/" target="_blank">且听风吟</a></span></div>
-					<div class="g_clr wf-inner last"><span><a href="http://www.19lou.com/forum-26-1.html" target="_blank">19楼浓情小说</a></span><span><a href="http://www.hongshu.com/" target="_blank">红薯小说阅读</a></span><span><a href="http://www.huanxia.com/" target="_blank">幻侠小说网</a></span><span><a href="http://www.3gsc.com.cn/" target="_blank">3G书城</a></span><span><a href="http://www.junshishu.com/" target="_blank">铁血军事小说</a></span></div>
-					<div class="g_clr wf-inner last"><span><a href="http://www.motie.com/" target="_blank">磨铁中文网</a></span><span><a href="http://www.lightnovel.cn/" target="_blank">轻之国度</a></span><span><a href="http://www.yuncheng.com/" target="_blank">云中书城</a></span><span><a href="http://hjsm.tom.com/" target="_blank">幻剑书盟</a></span><span><a href="http://www.lcread.com/" target="_blank">连城书盟</a></span><span><a href="http://www.tianya.cn/techforum/articleslist/0/16.shtml" target="_blank">莲蓬鬼话</a></span></div>
-					<div class="g_clr wf-inner last"><span><a href="#" >东方财富</a></span><span><a href="#" >58 同 城</a></span><span><a href="#">去哪儿网</a></span><span><a href="#" class="widget-links-l em" >新华</a>•<a href="#" class="widget-links-r" >人民</a></span><span><a href="#">美 丽 说</a></span><span><a href="#" >太平洋电脑</a></span>
-					</div>
-				</div>
+			<div class="widget-famoussite">
+				<div class="wf-line"></div>
+				<div class="g_clr wf-inner last"><span><a href="http://www.nlc.gov.cn/" target="_blank">国家图书馆</a></span><span><a href="http://cctv.cntv.cn/lm/baijiajiangtan/shipinji/index.shtml" target="_blank">百家讲坛</a></span><span><a href="http://wenku.baidu.com/" target="_blank">百度文库</a></span><span><a href="http://www.docin.com/" target="_blank">豆丁文库</a></span><span><a href="http://shuku.mofcom.gov.cn/book/index.html?wenxue" target="_blank">公益书库</a></span><span><a href="http://ishare.iask.sina.com.cn/" target="_blank">新浪爱问共享</a></span></div>
+				<div class="g_clr wf-inner last"><span><a href="http://book.ifeng.com/" target="_blank">凤凰读书</a></span><span><a href="http://book.douban.com/" target="_blank">豆瓣读书</a></span><span><a href="http://book.163.com/?wenxue" target="_blank">网易读书</a></span><span><a href="http://book.qq.com/" target="_blank">腾讯读书</a></span><span><a href="http://book.sina.com.cn/?wenxue" target="_blank">新浪读书</a></span><span><a href="http://book.sohu.com/" target="_blank">搜狐读书</a></span></div>
+				<div class="g_clr wf-inner last"><span><a href="http://www.duzhe.com/" target="_blank">读者</a></span><span><a href="http://www.yilin.net.cn/" target="_blank">意林</a></span><span><a href="http://www.rongshuxia.com/" target="_blank">榕树下</a></span><span><a href="http://www.storychina.cn/" target="_blank">故事会</a></span><span><a href="http://www.wenxiu.com/" target="_blank">文秀网</a></span><span><a href="http://wind.yinsha.com/" target="_blank">且听风吟</a></span></div>
 			</div>
 		</div>
 
-		<div class="layout-adbar">
-			<div id="box-inner-adbar">
-				<div class="widget-adbar">
-					<span>
-						<a href="#" target="_blank">麦考林</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">优购网</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">梦芭莎</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">乐蜂团购</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">走秀网</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">1号店</a>
-					</span>
-					<span>
-						<a href="#" target="_blank" >同程旅游网</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">酒仙网</a>
-					</span>
-					<span>
-						<a href="#" target="_blank">聚尚网</a>
-					</span>
-				</div>
-			</div>
+		<div class="widget-adbar">
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">经</a>
+			</span>
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">史</a>
+			</span>
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">子</a>
+			</span>
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">集</a>
+			</span>
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">启蒙</a>
+			</span>
+			<span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">其他</a>
+			</span>
 		</div>
 
 		<div class="layout-coolsite">
 			<div class="layout-inner">
-				<div id="box-coolsite">	
-					<div class="g_clr widget-coolsite ">
-						<ul class="g_clr groups">
-							<li>
-								<h4 class="g_fl"><a class="g_green-red" href="#">视 频</a></h4>
-								<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
-								<span><a href="#">优酷网</a></span>
-								<span><a href="#">奇艺高清</a></span>
-								<span><a href="#">土豆网</a></span>
-								<span><a href="#">搜狐视频</a></span>
-								<span><a href="#">乐视网</a></span>
-								<span><a href="#">迅雷看看</a></span>
-								<span><a href="#">百度视频</a></span>
-							</li>
-						</ul>
-						<ul class="g_clr groups">
-							<li>
-								<h4 class="g_fl"><a class="g_green-red" href="#">音 乐</a></h4>
-									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
-									<span><a href="#">百度音乐</a></span>
-									<span><a href="#">一听音乐</a></span>
-									<span><a href="#">酷狗音乐</a></span>
-									<span><a href="#">音悦台</a></span>
-									<span><a href="#">酷我音乐盒</a></span>
-									<span><a href="#">经典老歌</a></span>
-									<span><a href="#" class="g_red">我是歌手</a></span>
-							</li>
-						</ul>
-					</div>
-					<div style="clear:both;height:0;line-height:0;font-size:0;"></div>
+				<div class="g_clr widget-coolsite">
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=西周" target="_blank">西周</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="web/chaodai/xizhou.html" target="_blank">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=姜尚" target="_blank">姜尚</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=周公" target="_blank">周公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=召公" target="_blank">召公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=周宣王" target="_blank">周宣王</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=周幽王" target="_blank">周幽王</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=春秋" target="_blank">春秋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="web/chaodai/xizhou.html" target="_blank">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=董狐" target="_blank">董狐</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=楚庄王" target="_blank">楚庄王</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=齐桓公" target="_blank">齐桓公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=管仲" target="_blank">管仲</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=宋襄公" target="_blank">宋襄公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=晋文公" target="_blank">晋文公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=秦穆公" target="_blank">秦穆公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=柳下惠" target="_blank">柳下惠</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://baike.baidu.com/view/20236.htm" target="_blank">战国</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孔子" target="_blank">孔子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孟子" target="_blank">孟子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=老子" target="_blank">老子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=庄子" target="_blank">庄子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=荀子" target="_blank">荀子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=韩非" target="_blank">韩非</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=鬼谷子" target="_blank">鬼谷子</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=屈原" target="_blank">屈原</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=秦" target="_blank">秦</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=黄石公" target="_blank">黄石公</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=辛延年" target="_blank">辛延年</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孔鲋" target="_blank">孔鲋</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李斯" target="_blank">李斯</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=吕不韦" target="_blank">吕不韦</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=西汉" target="_blank">西汉</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=司马迁" target="_blank" title="史记">司马迁</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=贾谊" target="_blank">贾谊</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=东方朔" target="_blank">东方朔</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=董仲舒" target="_blank">董仲舒</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=司马相如" target="_blank">司马相如</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=枚乘" target="_blank">枚乘</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=扬雄" target="_blank">扬雄</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=公孙弘" target="_blank">公孙弘</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=东汉" target="_blank">东汉</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=曹操" target="_blank">曹操</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=曹丕" target="_blank">曹丕</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=曹植" target="_blank">曹植</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=班固" target="_blank">班固</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=张衡" target="_blank">张衡</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王粲" target="_blank">王粲</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘桢" target="_blank">刘桢</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=蔡邕" target="_blank">蔡邕</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=魏晋" target="_blank">魏晋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=嵇康" target="_blank">嵇康</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=阮籍" target="_blank">阮籍</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=左思" target="_blank">左思</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陈寿" target="_blank">陈寿</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=张协" target="_blank">张协</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=潘岳" target="_blank">潘岳</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘琨" target="_blank">刘琨</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=郭璞" target="_blank">郭璞</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=东晋" target="_blank">东晋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陶渊明" target="_blank">陶渊明</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=谢灵运" target="_blank">谢灵运</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王羲之" target="_blank">王羲之</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=鲍照" target="_blank">鲍照</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘义庆" target="_blank">刘义庆</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=许询" target="_blank">许询</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孙绰" target="_blank">孙绰</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=范晔" target="_blank">范晔</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=南北朝" target="_blank">南北朝</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=郦道元" target="_blank">郦道元</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=庾信" target="_blank">庾信</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘勰" target="_blank">刘勰</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=萧统" target="_blank">萧统</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=萧衍" target="_blank">萧衍</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=谢朓" target="_blank">谢朓</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=萧纲" target="_blank">萧纲</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=沈约" target="_blank">沈约</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=隋" target="_blank">隋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=卢思道" target="_blank">卢思道</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=薛道衡" target="_blank">薛道衡</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杨素" target="_blank">杨素</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=江总" target="_blank">江总</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=许善心" target="_blank">许善心</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=虞世基" target="_blank">虞世基</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王胄" target="_blank">王胄</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=初唐" target="_blank">初唐</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王勃" target="_blank">王勃</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杨炯" target="_blank">杨炯</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=卢照邻" target="_blank">卢照邻</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=骆宾王" target="_blank">骆宾王</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=沈佺期" target="_blank">沈佺期</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=宋之问" target="_blank">宋之问</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陈子昂" target="_blank">陈子昂</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=贺知章" target="_blank">贺知章</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=盛唐" target="_blank">盛唐</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李白" target="_blank">李白</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杜甫" target="_blank">杜甫</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王维" target="_blank">王维</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孟浩然" target="_blank">孟浩然</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=高适" target="_blank">高适</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=岑参" target="_blank">岑参</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=韦应物" target="_blank">王昌龄</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王之涣" target="_blank">王之涣</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=中唐" target="_blank">中唐</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=白居易" target="_blank">白居易</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=元稹" target="_blank">元稹</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李绅" target="_blank">李绅</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘禹锡" target="_blank">刘禹锡</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=韩愈" target="_blank">韩愈</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=张籍" target="_blank">张籍</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李贺" target="_blank">李贺</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=柳宗元" target="_blank">柳宗元</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=晚唐" target="_blank">晚唐</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杜牧" target="_blank">杜牧</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李商隐" target="_blank">李商隐</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=温庭筠" target="_blank">温庭筠</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陆龟蒙" target="_blank">陆龟蒙</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=罗隐" target="_blank">罗隐</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=韦庄" target="_blank">韦庄</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=司空图" target="_blank">司空图</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=五代十国" target="_blank">五代十国</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李煜" target="_blank">李煜</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=花蕊夫人" target="_blank">花蕊夫人</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=刘昫" target="_blank">刘昫</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=顾夐" target="_blank">顾夐</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=牛希济" target="_blank">牛希济</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孙光宪" target="_blank">孙光宪</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=冯延巳" target="_blank">冯延巳</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=徐铉" target="_blank">徐铉</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=北宋" target="_blank">北宋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=苏轼" target="_blank">苏轼</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=范仲淹" target="_blank">范仲淹</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王安石" target="_blank">王安石</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=晏几道" target="_blank">晏几道</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=李清照" target="_blank">李清照</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=司马光" target="_blank">司马光</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=柳永" target="_blank">柳永</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=岳飞" target="_blank">岳飞</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=南宋" target="_blank">南宋</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陆游" target="_blank">陆游</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=辛弃疾" target="_blank">辛弃疾</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杨万里" target="_blank">杨万里</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=元好问" target="_blank">元好问</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=吴文英" target="_blank">吴文英</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=文天祥" target="_blank">文天祥</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=姜夔" target="_blank">姜夔</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=尤袤" target="_blank">尤袤</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=元" target="_blank">元</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=关汉卿" target="_blank">关汉卿</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王实甫" target="_blank">王实甫</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=马致远" target="_blank">马致远</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=吴昌龄" target="_blank">吴昌龄</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杨基" target="_blank">杨基</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=徐贲" target="_blank">徐贲</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=高启" target="_blank">高启</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=贾仲明" target="_blank">贾仲明</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=明" target="_blank">明</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=解缙" target="_blank">解缙</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=杨慎" target="_blank">杨慎</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=徐渭" target="_blank">徐渭</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王夫之" target="_blank">王夫之</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=吴承恩" target="_blank">吴承恩</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=于谦" target="_blank">于谦</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=汤显祖" target="_blank">汤显祖</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王守仁" target="_blank">王守仁</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=清" target="_blank">清</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=曹雪芹" target="_blank">曹雪芹</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=纳兰性德" target="_blank">纳兰性德</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=钱谦益" target="_blank">钱谦益</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=蒲松龄" target="_blank">蒲松龄</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=洪升" target="_blank">洪升</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=孔尚任" target="_blank">孔尚任</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=八大山人" target="_blank">八大山人</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=姚鼐" target="_blank">姚鼐</a></span>
+					  </li>
+					</ul>
+					<ul class="g_clr groups last">
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=晚清" target="_blank">晚清</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=王国维" target="_blank">王国维</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=康有为" target="_blank">康有为</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=梁启超" target="_blank">梁启超</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=谭嗣同" target="_blank">谭嗣同</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=龚自珍" target="_blank">龚自珍</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=林则徐" target="_blank">林则徐</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=曾国藩" target="_blank">曾国藩</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=左宗棠" target="_blank">左宗棠</a></span>
+					  </li>
+					  <li>
+						<h4 class="g_fl"><a class="g_green-red" href="http://www.baidu.com/baidu?wd=民国" target="_blank">民国</a></h4>
+						  <span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=鲁迅" target="_blank">鲁迅</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=陈寅恪" target="_blank">陈寅恪</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=朱自清" target="_blank">朱自清</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=徐志摩" target="_blank">徐志摩</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=戴望舒" target="_blank">戴望舒</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=闻一多" target="_blank">闻一多</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=郁达夫" target="_blank">郁达夫</a></span>
+						  <span><a href="http://www.baidu.com/baidu?wd=老舍" target="_blank">老舍</a></span>
+					  </li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="layout-content-slider" id="layout-side">
-		<div class="lcs-info layout-inner">
-				<div id="box-starbar">
-					<ul class="widget-starbar g_clr" >
-						<li class="left">
-							<div class="g_clr widget-baritem">
-								<div class="category"><i class="i-tv"></i><a href="#">电视剧</a></div>
-							</div>
-						</li>
-						<li class="right">
-							<div class="g_clr widget-baritem">
-								<div class="category"><i class="i-game"></i><a href="#">小游戏</a></div>
-							</div>
+	<div class="layout-content-slider">
+		   <div class="lcs-info layout-inner">
+				<div>
+					<ul style="margin:11px;">
+						<li>
+							<h3><a class="g_h3 g_green" href="#" target="_blank">温故知新</a></h3>
 						</li>
 					</ul>
 				</div>
-	
-				<div id="box-toplist2">
-					<div id="toplist2" class="g_box widget-toplist toplist-first" >
-						<div class="channels g_clr">
-							<ul class="js_title">
-								<li class="channels_title channels_list option_hover">
-									<a href="#">综合</a>
-								</li>
-								<li class="channels_title channels_list">
-									<a href="#">影视</a>
-								</li>
-								<li class="channels_title channels_list">
-									<a href="#">娱乐</a>
-								</li>
-								<li class="channels_title channels_list">
-									<a href="#">军事</a>
-								</li>
-							</ul>
-						</div>
+				<div class="splitline split"></div>
+				<div>
+					<div class="g_box widget-toplist toplist-first" >
 						<div class="g_box widget-tophot2">
-							<div class="normal-box g_clr">
-								<div class="hot-title g_clr">
-									<a href="#" target="_blank" title="xxxxx">
-									<img alt="xxxxx" src="#" height="60" width="100">
-									<p>xxxxx</p>
-									</a>
-									<span class="news-desc">xxxxx
-										<a href="#" target="_blank">
-										<span class="detial">[详细]</span>
-										</a>
-									</span>
-								</div>
-								<ul class="news-content">
-									<li>
-									<span class="topnews_desc">492万</span>
-									<a class=" " href="#" target="_blank" title="xxxxx">
-									<span>xxxxx</span>
-									</a>
-									</li>
-								</ul>
-								<div class="splitline split"></div>
-								<ul class="img-content g_clr">
-									<li>
-										<a class="" href="#" target="_blank" title="xxxxx">
-										<img alt="xxxxx" src="#" height="60" width="100">
-										</a>
-									</li>
-									<li class="mgl">
-										<a class="" href="#" target="_blank" title="xxxxx">
-											<img alt="xxxxx" src="#" height="60" width="100">
-										</a>	
-									</li>
-								</ul>
-								<ul class="text-content g_clr">
-									<li class="clr_l">
-										<a class="" href="#" target="_blank" title="xxxxx">xxxxx</a>
-									</li>
-									<li class="mgl">
-										<a class="" href="#" target="_blank" title="xxxxx">xxxxx</a>
-									</li>
-								</ul>
+						    <div class="channels g_clr">
+								<h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">小学</a></h3>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="lcs-topgame layout-inner" id="erji-game">
-				<div id="box-topgame">		
-					<div class="g_box widget-topgame container">
-						<div class="normal-box g_clr" style="height:auto">
-							<div class="title">
-								<h3><a class="g_h3 g_green" href="#">热门游戏</a></h3>
-							</div>
-							<ul class="g_clr">
-								<li class="topgame_list_content">
-									<a href="#" target="_blank" title="连连看"><img alt="连连看" src="#" height="45" width="67">
-									<span>连连看</span></a>
+							<ul class="news-content" style="text-align: left">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">一年级</a></span>&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">二年级</a></span>&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">三年级</a></span>&nbsp;&nbsp;&nbsp;
+								<span><a class="g_more g_gray-red" href="#">&nbsp;</a></span>
 								</li>
-								<li class="topgame_list_content">
-									<a href="#" target="_blank" title="愤怒的小鸟"><img alt="愤怒的小鸟" src="#" height="45" width="67">
-									<span>愤怒的小鸟</span></a>
-								</li>
-								<li class="topgame_list_content">
-									<a href="#" target="_blank" title="愚人节专题"><img alt="愚人节专题" src="#" height="45" width="67">
-									<span>愚人节专题</span></a>
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">四年级</a></span>&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">五年级</a></span>&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">六年级</a></span>&nbsp;&nbsp;
+								<span><a class="g_more g_gray-red" href="#">课外</a></span>
 								</li>
 							</ul>
-							<ul class="text-content g_clr">
-								<li class="clr_l">
-									<a class="" href="#" target="_blank" title="青蛙祖玛">青蛙祖玛</a>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">中学</a></h3>
+							</div>
+							<ul class="news-content" style="text-align: center">
+								<li>
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">初一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">初二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">初三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a class="g_more g_gray-red" href="#">课外</a></span>
 								</li>
-								<li class="mgl">
-									<a class="" href="#" target="_blank" title="儿童小游戏">儿童小游戏</a>
+							</ul>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">高中</a></h3>
+							</div>
+							<ul class="news-content" style="text-align: center">
+								<li>
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">高一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">高二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=高三" target="_blank" title="xxxxx">高三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a class="g_more g_gray-red" href="#">课外</a></span>
+								</li>
+							</ul>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">大学</a></h3>
+							</div>
+							<ul class="news-content" style="text-align: center">
+								<li>
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">大一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">大二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">大三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span><a href="http://www.baidu.com/baidu?wd=" target="_blank" title="xxxxx">大四</a></span>
 								</li>
 							</ul>
 						</div>
@@ -375,121 +483,139 @@ function logincolse(){
 			</div>
 
 			<!-- 二级实用工具开始  -->
-			<div style="height: 552px;" class="lcs-erji layout-inner" id="layout-erji">
-				<div id="box-erji">
-					<div class="box-widget-erji">
-						<dl class="widget-erji erji-first">
-							<dt><h3><a class="g_h3 g_green" href="#">生活服务</a></h3></dt>
-							<dd class="g_clr">
-								<span><a href="#">购物</a></span>
-								<span><a href="#">彩票</a></span>
-								<span><a href="#">查询</a></span>
-								<span><a href="#">天气</a></span>
-							</dd>
-						</dl>
-						<dl class="widget-erji last">
-							<dt><h3><a class="g_h3 g_green" href="#">娱乐休闲</a></h3></dt>
-							<dd class="g_clr">
-								<span><a href="#">音乐</a></span>
-								<span><a href="#">游戏</a></span>
-								<span><a href="#">视频</a></span>
-								<span><a href="#">电影</a></span>
-								<span><a href="#">桌面</a></span>
-								<span><a href="#">琴棋</a></span>
-								<span><a href="#">设计</a></span>
-								<span><a href="#">更多</a></span>
-							</dd>
-						</dl>
-					</div>
+			<div style="height: 680px;" class="lcs-erji layout-inner">
+				<div style="margin:11px;">
+					<h3><a class="g_h3 g_green" href="#" target="_blank">学而时习之</a>
 				</div>
-				<div class="autoheight"></div>
-			</div>
-	</div><!-- 二级实用工具结束  -->
+				<div class="splitline split"></div>
+				<div class="box-widget-erji">
+					<dl class="widget-erji erji-first">
+						<dt><h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">经</a></h3></dt>
+						<dd class="g_clr">
+							<span><a href="http://www.baidu.com/baidu?wd=诗经" target="_blank">诗经</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=论语" target="_blank">论语</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=仪礼" target="_blank">仪礼</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=中庸" target="_blank">中庸</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=大学" target="_blank">大学</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=尔雅" target="_blank">尔雅</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=左传" target="_blank">左传</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=尚书" target="_blank">尚书</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=孟子" target="_blank">孟子</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=孝经" target="_blank">孝经</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=周易" target="_blank">周易</a></span>
+							<span class="g_fr"><a class="g_more g_gray-red" href="#">更多</a></span>
+						</dd>
+					</dl>
+					<dl class="widget-erji erji-first">
+						<dt><h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">史</a></h3></dt>
+						<dd class="g_clr">
+							<span><a href="http://www.baidu.com/baidu?wd=战国策" target="_blank">战国策</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=国语" target="_blank">国语</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=史记" target="_blank">史记</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=晋书" target="_blank">晋书</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=三国志" target="_blank">三国志</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=隋书" target="_blank">隋书</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=唐史" target="_blank">唐史</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=宋史" target="_blank">宋史</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=元史" target="_blank">元史</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=明史" target="_blank">明史</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=清史" target="_blank">清史</a></span>
+							<span class="g_fr"><a class="g_more g_gray-red" href="#">更多</a></span>
+						</dd>
+					</dl>
+					<dl class="widget-erji erji-first">
+						<dt><h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">子</a></h3></dt>
+						<dd class="g_clr">
+							<span><a href="http://baike.baidu.com/view/2372.htm" target="_blank">三国演义</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://baike.baidu.com/view/2571.htm" target="_blank">红楼梦</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://baike.baidu.com/view/2578.htm" target="_blank">水浒传</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://baike.baidu.com/view/2583.htm" target="_blank">西游记</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=孙子兵法" target="_blank">孙子兵法</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=茶经" target="_blank">茶经</a></span>
+							<span class="g_fr"><a class="g_more g_gray-red" href="#">更多</a></span>
+						</dd>
+					</dl>
+					<dl class="widget-erji erji-first">
+						<dt><h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">集</a></h3></dt>
+						<dd class="g_clr">
+							<span style="width:40%"><a href="http://www.baidu.com/baidu?wd=唐诗三百首" target="_blank">唐诗三百首</a></span>
+							<span style="width:34%;text-align:right"><a href="http://www.baidu.com/baidu?wd=古文观止" target="_blank">古文观止</a></span>
+							<span style="width:26%"></span>
+							<span><a href="http://www.baidu.com/baidu?wd=乐府诗集" target="_blank">乐府诗集</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=人间词话" target="_blank">人间词话</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=文心雕龙" target="_blank">文心雕龙</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=玉台新咏" target="_blank">玉台新咏</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=全唐诗" target="_blank">全唐诗</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=全宋词" target="_blank">全宋词</a></span>
+							<span><a href="http://www.baidu.com/baidu?wd=诗品" target="_blank">诗品</a></span>
+							<span class="g_fr"><a class="g_more g_gray-red" href="#">更多</a></span>
+						</dd>
+					</dl>
+					<dl class="widget-erji erji-first">
+						<dt><h3><a class="g_h3 g_green" href="http://www.baidu.com/baidu?wd=" target="_blank">启蒙</a></h3></dt>
+						<dd class="g_clr">
+							<span><a href="http://www.baidu.com/baidu?wd=声律启蒙" target="_blank">声律启蒙</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=增广贤文" target="_blank">增广贤文</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=百家姓" target="_blank">百家姓</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=三字经" target="_blank">三字经</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=千家诗" target="_blank">千家诗</a></span>
+							<span>&nbsp;</span>
+							<span><a href="http://www.baidu.com/baidu?wd=千字文" target="_blank">千字文</a></span>
+							<span class="g_fr"><a class="g_more g_gray-red" href="#">更多</a></span>
+						</dd>
+					</dl>
+				</div>
+			</div><!-- 二级实用工具结束  -->
+		</div>
 </div>
 
-<div>
+<div class="layout-bottom">
 	<div class="layout-footer">
-		<div id="box-copyright">
-			<div class="widget-copyright">
-				<p class="links">
-					<a href="#">关于本站</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-					<a href="#">反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-					<a href="#">一起挑错</a>
-				</p>
-				<p class="copyright">&nbsp;&nbsp;&nbsp;&nbsp;上网导航
-					<span class="gray">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-					<a href="#">京xxx证xxxxxx号<i class="g_icon i-papers"></i></a>
-				</p>
-			</div>
+		<div class="widget-copyright">
+			<p class="links">
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">关于本站</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="mailto:zhuzixueshuo@163.com" target="_blank">反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="mailto:zhuzixueshuo@163.com" target="_blank">一起挑错</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<span class="gray">zhuzixueshuo@163.com</span>
+			</p>
+			<p class="copyright">&nbsp;&nbsp;&nbsp;&nbsp;上网导航
+				<span class="gray">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+				<a href="http://www.baidu.com/baidu?wd=" target="_blank">京xxx证xxxxxx号</a>
+			</p>
 		</div>
 	</div>
 </div>
 
-<div id="login-div" class="popup popup-login" style="display: none; left: 355px; top: 295.5px;">
+<div id="login-div" class="popup popup-login" style="display: none; left: 500px; top: 200px;">
   <div class="popup-head">
-	<a class="js_close" href="javascript:void(0);" onclick="logincolse();"></a><span class="js_title">用xx帐号登录</span>
+	<a class="js_close" href="javascript:void(0);" onclick="logincolse();"></a>
   </div>
-  <div class="login_left">
-  <div style="display: block;" class="err_holder" id="errHolder">请输入帐号</div>
-  <div id="login_holder">
-	  <div id="login_holder_1">
-		  <form class="pass_login_form" id="pass_login_form_0" action="#" target="pass_login_iframe_0" method="post" style="">
-			  <p class="pass_login_p pass_login_p_username" id="pass_login_p_username_0">
-				<label class="pass_login_label pass_login_label_username" id="pass_login_label_username_0" for="pass_login_username_0">帐　号</label>
-				<input class="pass_login_input pass_login_input_username login_input_err" id="pass_login_username_0" name="username" type="text">
-				<span class="pass_login_err" id="pass_login_username_0_err">请您输入帐号</span>
-				<span class="pass_login_tip" id="pass_login_username_0_tip"></span>
-			  </p>
-			  <p class="pass_login_p pass_login_p_password" id="pass_login_p_password_0">
-				<label class="pass_login_label pass_login_label_password" id="pass_login_label_password_0" for="pass_login_password_0">密　码</label>
-				<input class="pass_login_input pass_login_input_password" id="pass_login_password_0" name="password" type="password">
-				<span class="pass_login_err" id="pass_login_password_0_err"></span>
-				<span class="pass_login_tip" id="pass_login_password_0_tip"></span>
-			  </p>
-			  <p style="display: none;" class="pass_login_p pass_login_p_verifycode" id="pass_login_p_verifycode_0">
-				<label class="pass_login_label pass_login_label_verifycode" id="pass_login_label_verifycode_0" for="pass_login_verifycode_0">验证码</label>
-				<input class="pass_login_input pass_login_input_verifycode" id="pass_login_verifycode_0" name="verifycode" type="text">
-				<span class="pass_login_err" id="pass_login_verifycode_0_err"></span>
-				<span class="pass_login_tip" id="pass_login_verifycode_0_tip"></span>
-			  </p>
-			  <p style="display: none;" class="pass_login_p pass_login_p_img_verifycode" id="pass_login_p_img_verifycode_0">
-				<img src="https://passport.baidu.com/img/v2/small_blank.gif" class="pass_login_verifycode" id="pass_login_img_verifycode_0" alt="验证码图片" title="验证码图片">
-				<span class="pass_login_change_verifycode" id="pass_login_change_verifycode_0">看不清？</span>
-			  </p>
-			  <p class="pass_login_p" id="pass_login_p_generalerror_0">
-				<span class="pass_login_generalerror" id="pass_login_generalerror_0"></span>
-			  </p>
-			  <p class="pass_login_p pass_login_p_rem" id="pass_login_p_rem_0">
-				<input class="pass_login_input pass_login_input_rem" id="pass_login_rem_0" name="mem_pass" checked="checked" type="checkbox">
-				<label class="pass_login_label pass_login_label_rem" id="pass_login_label_rem_0" for="pass_login_rem_0">记住我的登录状态</label>
-			  </p>
-			  <p class="pass_login_p pass_login_p_des" id="pass_login_p_des_0">使用公用电脑请勿选择该项</p>
-			  <p class="pass_login_p pass_login_p_btn" id="pass_login_p_btn_0">
-				<input class="pass_login_input pass_login_input_submit" id="pass_login_input_submit_0" value="" type="button">
-			    <a href="#" class="pass_login_a_fgtpwd" id="pass_login_a_fgtpwd_0">忘记密码？</a>
-			  </p>
-		  </form>
-	  </div>
-	</div>
- </div>
- <div class="login_right">
-   <p class="reg_text">还没有xx帐号？</p>
-   <p class="reg_link">
-	 <a href="#" target="_blank" id="reg_btn"></a>
-   </p>
-   <p class="other_title">使用合作网站帐号登录</p>
-   <ul class="other_list">
-	  <li>
-		<a class="other_icon other_icon_qq" href="#">QQ帐号登录</a>
-	  </li>
-	  <li>
-		<a class="other_icon other_icon_sina" href="#">新浪微博帐号登录</a>
-	  </li>
-	  <li>
-		<a class="other_icon other_icon_renren" href="#">人人帐号登录</a>
-	  </li>
-   </ul>
- </div>
- </div>
+  <div>
+	<form id="login_form" action="#" method="post">
+	    <div style="vertical-align: middle;padding: 0 9px 0 20px;">
+			帐　号<input class="login_input_username" id="username" name="username" type="text"><br><br>
+			密　码<input class="login_input_password" id="password" name="password" type="password">
+		</div>
+		<div style="vertical-align: middle;padding: 0 20px 0 20px;line-height: 50px;">
+			<input class="login_input_submit" id="submit" name="submit" type="button" style="width:100px">
+			<a href="http://www.baidu.com/baidu?wd=" target="_blank"><label style="font-size: 13px;">忘记密码</label></a>
+			<a href="http://www.baidu.com/baidu?wd=" target="_blank"><label style="font-size: 13px;">立即注册</label></a>
+		</div>
+	</form>
+  </div>
+</div>
 </body>
 </html>
