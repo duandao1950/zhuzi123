@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/test.css">
+<link href="http://s0.hao123img.com/v3/mn/dk/ft/SS/OX/skin-color-green.merge.css" type="text/css" rel="stylesheet">
+<SCRIPT type="text/javascript" src="js/jquery-1.6.1.js"></SCRIPT>
+<style type="text/css">
+	.js_khover {
+		background: none repeat scroll 0 0 #F0F6E9;
+	}
+</style>
+<script>
+
+$(function(){  
+	$(".g_clr .groups li").hover(function(){
+	  $(this).addClass('js_khover');},function(){$(this).removeClass('js_khover');}
+    ); 
+});  
+
+function login(){
+	//$("#login-form").hide();javascript:void(0);
+	$("#login-div").show();
+}
+
+function logincolse(){
+    //$("#login-form").hide();javascript:void(0);
+	$("#login-div").hide();
+}
+
+
+</script>
+</head>
+<body class="skin-color-green">
+<div class="g_hf-bg layout-userbar">
+	<div class="w960px layout-inner">
+		<div id="box-userbar" class="box-userbar">
+			<div id="userBar" class="w960px g_clr widget-userbar">
+				<div class="g_fl" style="min-width:470px">
+					<ul class="g_icon quik-menu big-home">
+						<li class="js_sethomeBox sethome-box">
+							<a class="js_setHome sethome g_red" onclick="return false" href="#">设为主页</a>&nbsp;&nbsp;&nbsp;
+							<a href="#" class="g_black">主页修复</a>
+							<span class="js_setFavorite" style="display:none">&nbsp;&nbsp;&nbsp;
+								<a href="#" class="g_black js_favorite">加入收藏</a>
+							</span>
+							<div class="hometip js_hometip" style="display:none">
+								<i class="arrow"></i>
+								<a href="#" class="js_tipmsg tipmsg">设为主页 &gt;&gt;</a>
+								<i class="js_tipclose tipclose"></i>
+							</div>
+						</li>
+					</ul>
+					<span class="calendar-box">
+						<a href="#" id="calendar" class="widget-calendar" title="点击查看万年历">x月x日 星期一（xx节）<span>21:06</span></a>
+					</span>
+				</div>
+				<div class="g_fr">
+					<ul class="quik-menu">
+						<li class="selfhood tip-box">
+							<a class="g_hf-icon more">关注站长</a>
+						</li>
+						<li class="user">
+							<a target="_self" class="user-login" href="javascript:;" onclick="login();">登录</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="layoutContainer" class="g_hf-bg layout-container">
+	<div class="layout-container-inner">
+		<div class="w960px layout-header">
+			<div id="header" class="box-inner-header">
+				<div class="widget-header">
+					<div class="g_fl">
+						<span class="box-logo" id="box-logo">
+							<a id="indexLogo" href="#" title="点击进入 xxxxx的空间">
+								<img src="#" height="68" width="186">
+							</a>
+						</span>
+					</div>
+					<div class="box-mail">
+						<div id="mail" class="g_clr widget-mail">
+							<form id="mailForm" class="js_mailForm" method="post" action="#">
+								<div class="widget-email-inner">
+									<p class="g_clr firstrow">
+										<span class="js_inputOuter fl box-mailinput">
+											<input id="mailUserName" class="js_userName mailusername">
+											<label style="display: inline;" for="mailUserName" class="wm-tip">邮箱帐号</label>
+										</span>
+										<span id="mailselect" class="js_select g_icon fl box-mailselect">
+											<label class="js_selectLabel g_icon mailselect">@163.com</label>
+										</span>
+									</p>
+									<p class="g_clr">
+										<span class="js_inputOuter fl box-mailinput">
+											<input id="mailPassWord" class="js_pwd emailpassword" type="password">
+											<label style="display: inline;" for="mailPassWord" class="wm-tip">邮箱密码</label>
+										</span>
+										<span id="mailParas" class="js_mailParas" style="display:none"></span>
+											<span class="box-mailsubmit">
+											<input class="g_icon mailsubmit" id="mailsubmit" value="登录" type="submit">
+										</span>
+									</p>
+								</div>
+							</form>
+					    </div>
+				   </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="ipad-box" class="ipad-box"></div>
+<div class="w960px layout-content g_clr">
+	<div class="layout-content-ct" id="layout-content">	
+		<div class="layout-famoussite" id="layout-famoussite">
+			<div id="box-site">
+				<div class="widget-site" id="site">
+				    <div class="js_site site site-normal">
+						<div style="display: none;" class="js_manage site-manage" title="添加网址"></div>
+						<ul class="js_bd site-bd">
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.qidian.com/" target="_blank">起点</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.readnovel.com/" target="_blank">小说阅读网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.xxsy.net/" target="_blank">潇湘书院</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.xs8.cn/" target="_blank">言情小说吧</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.zongheng.com/" target="_blank">纵横中文网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://book.hao123.com/index/" target="_blank">小说排行榜</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.jjwxc.net/" target="_blank">晋江文学</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.hongxiu.com/" target="_blank">红袖添香</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.booksky.org/" target="_blank">快眼看书</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.sodu.org/" target="_blank">搜读Sodu</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.zhulang.com/" target="_blank">逐浪小说网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.17k.com/" target="_blank">17k小说网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.kanshu.com/" target="_blank">看书网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.cc222.com/" target="_blank">烟雨红尘</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.fmx.cn/" target="_blank">凤鸣轩小说</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.qdmm.com/" target="_blank">起点女生网</a>
+							</li>
+							<li class="js_site-item site-item site-item-normal ">
+								<a class="js_text" href="http://www.cuiweiju.com/" target="_blank">翠微居</a>
+							</li>
+						</ul>
+					 <div class="js_refresh site-refresh-w" style="display:none">
+						<div class="site-refresh">您的常用网址没有加载成功，请您<a class="js_refresh-button">重新加载</a></div>
+					 </div>
+					</div>
+				</div>
+			</div>
+			<div style="display:none">
+				<span><a href="http://www.baidu.com/search/guoxue/dir/fenlei.html?wenxue" target="_blank">百度国学</a></span>
+			</div>
+			<div id="box-famoussite" >	
+				<div class="widget-famoussite" >
+					<div class="wf-line"></div>
+					<div class="g_clr wf-inner last"><span><a href="http://www.nlc.gov.cn/" target="_blank">国家图书馆</a></span><span><a href="http://cctv.cntv.cn/lm/baijiajiangtan/shipinji/index.shtml" target="_blank">百家讲坛</a></span><span><a href="http://wenku.baidu.com/" target="_blank">百度文库</a></span><span><a href="http://www.docin.com/" target="_blank">豆丁文库</a></span><span><a href="http://shuku.mofcom.gov.cn/book/index.html?wenxue" target="_blank">公益书库</a></span><span><a href="http://ishare.iask.sina.com.cn/" target="_blank">新浪爱问共享</a></span></div>
+					<div class="g_clr wf-inner last"><span><a href="http://book.ifeng.com/" target="_blank">凤凰读书</a></span><span><a href="http://book.douban.com/" target="_blank">豆瓣读书</a></span><span><a href="http://book.163.com/?wenxue" target="_blank">网易读书</a></span><span><a href="http://book.qq.com/" target="_blank">腾讯读书</a></span><span><a href="http://book.sina.com.cn/?wenxue" target="_blank">新浪读书</a></span><span><a href="http://book.sohu.com/" target="_blank">搜狐读书</a></span></div>
+					<div class="g_clr wf-inner last"><span><a href="http://www.duzhe.com/" target="_blank">读者</a></span><span><a href="http://www.yilin.net.cn/" target="_blank">意林</a></span><span><a href="http://www.rongshuxia.com/" target="_blank">榕树下</a></span><span><a href="http://www.storychina.cn/" target="_blank">故事会</a></span><span><a href="http://www.wenxiu.com/" target="_blank">文秀网</a></span><span><a href="http://wind.yinsha.com/" target="_blank">且听风吟</a></span></div>
+					<div class="g_clr wf-inner last"><span><a href="http://www.19lou.com/forum-26-1.html" target="_blank">19楼浓情小说</a></span><span><a href="http://www.hongshu.com/" target="_blank">红薯小说阅读</a></span><span><a href="http://www.huanxia.com/" target="_blank">幻侠小说网</a></span><span><a href="http://www.3gsc.com.cn/" target="_blank">3G书城</a></span><span><a href="http://www.junshishu.com/" target="_blank">铁血军事小说</a></span><span><a href="http://www.motie.com/" target="_blank">磨铁中文网</a></span></div>
+					<div class="g_clr wf-inner last"><span><a href="http://www.lightnovel.cn/" target="_blank">轻之国度</a></span><span><a href="http://www.yuncheng.com/" target="_blank">云中书城</a></span><span><a href="http://hjsm.tom.com/" target="_blank">幻剑书盟</a></span><span><a href="http://www.lcread.com/" target="_blank">连城书盟</a></span><span><a href="http://www.tianya.cn/techforum/articleslist/0/16.shtml" target="_blank">莲蓬鬼话</a></span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layout-adbar">
+			<div id="box-inner-adbar">
+				<div class="widget-adbar">
+					<span>
+						<a href="#" target="_blank">经</a>
+					</span>
+					<span>
+						<a href="#" target="_blank">史</a>
+					</span>
+					<span>
+						<a href="#" target="_blank">子</a>
+					</span>
+					<span>
+						<a href="#" target="_blank">集</a>
+					</span>
+					<span>
+						<a href="#" target="_blank">蒙学</a>
+					</span>
+					<span>
+						<a href="#" target="_blank">其他</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="layout-coolsite">
+			<div class="layout-inner">
+				<div id="box-coolsite">	
+					<div class="g_clr widget-coolsite ">
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">春秋</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">诗经</a></span>
+									<span><a href="#">论语</a></span>
+									<span><a href="#">左传</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">战国</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">孟子</a></span>
+									<span><a href="#">列子</a></span>
+									<span><a href="#">庄子</a></span>
+									<span><a href="#">荀子</a></span>
+									<span><a href="#">韩非子</a></span>
+									<span><a href="#">吕氏春秋</a></span>
+									<span><a href="#">屈原</a></span>
+									<span><a href="#">战国策</a></span>
+							</li>
+						</ul>
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">汉</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">新书</a></span>
+									<span><a href="#">淮南子</a></span>
+									<span><a href="#">史记</a></span>
+									<span><a href="#">汉书</a></span>
+									<span><a href="#">乐府</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">三国</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">魏武帝集</a></span>
+									<span><a href="#">曹子建集</a></span>
+									<span><a href="#">诸葛亮集</a></span>
+									<span><a href="#">三国志</a></span>
+									<span><a href="#">搜神记</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">晋</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">陶渊明集</a></span>
+									<span><a href="#">后汉书</a></span>
+									<span><a href="#">世说新语</a></span>
+									<span><a href="#">文心雕龙</a></span>
+									<span><a href="#">乐府诗集</a></span>
+							</li>
+						</ul>
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">初唐</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">王子安集</a></span>
+									<span><a href="#">孟襄阳集</a></span>
+									<span><a href="#">王昌龄集</a></span>
+									<span><a href="#">王右巫集</a></span>
+									<span><a href="#">高常侍集</a></span>
+									<span><a href="#">李太白集</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">盛唐</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">岑嘉州诗集</a></span>
+									<span><a href="#">孟东野诗集</a></span>
+									<span><a href="#">昌黎先生集</a></span>
+									<span><a href="#">刘宾客集</a></span>
+									<span><a href="#">白香山诗集</a></span>
+									<span><a href="#">柳河东集</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">晚唐</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">昌谷集</a></span>
+									<span><a href="#">樊川文集</a></span>
+									<span><a href="#">李义山诗集</a></span>
+									<span><a href="#">南唐二主词</a></span>
+							</li>
+						</ul>
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">北宋</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">范文正公集</a></span>
+									<span><a href="#">乐章集</a></span>
+									<span><a href="#">殊玉词</a></span>
+									<span><a href="#">欧阳文忠集</a></span>
+									<span><a href="#">元丰类稿</a></span>
+									<span><a href="#">王临川集</a></span>
+									<span><a href="#" class="g_red">资治通鉴</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">南宋</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">梦溪笔谈</a></span>
+									<span><a href="#">东坡诗集</a></span>
+									<span><a href="#">栾城集</a></span>
+									<span><a href="#">漱玉词</a></span>
+									<span><a href="#">剑南诗稿</a></span>
+									<span><a href="#">文山先生全集</a></span>
+							</li>
+						</ul>
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">元</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">关汉卿</a></span>
+									<span><a href="#">西厢记</a></span>
+									<span><a href="#">东篱乐府</a></span>
+									<span><a href="#">张养浩</a></span>
+									<span><a href="#">雎景臣</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">明</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">水浒传</a></span>
+									<span><a href="#">三国演义</a></span>
+									<span><a href="#">震川文集</a></span>
+									<span><a href="#">牡丹亭</a></span>
+									<span><a href="#">三言两拍</a></span>
+									<span><a href="#">七录斋集</a></span>
+							</li>
+					    </ul>
+					    <ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">清</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">长生殿</a></span>
+									<span><a href="#">桃花扇</a></span>
+									<span><a href="#">聊斋志异</a></span>
+									<span><a href="#">儒林外史</a></span>
+									<span><a href="#">随园诗话</a></span>
+									<span><a href="#">纳兰词</a></span>
+									<span><a href="#" class="g_red">红楼梦</a></span>
+							</li>
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">晚清</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">镜花缘</a></span>
+									<span><a href="#">已亥杂诗</a></span>
+									<span><a href="#">官场现形记</a></span>
+									<span><a href="#">老残游记</a></span>
+									<span><a href="#">孽海花</a></span>
+									<span><a href="#">饮冰室合集</a></span>
+									<span><a href="#">人间词话</a></span>
+							</li>
+						</ul>
+						<ul class="g_clr groups">
+							<li>
+								<h4 class="g_fl"><a class="g_green-red" href="#">民国</a></h4>
+									<span class="g_fr"><a class="g_more g_gray-red" href="#">更多&gt;&gt;</a></span>
+									<span><a href="#">鲁迅</a></span>
+									<span><a href="#">郁达夫</a></span>
+									<span><a href="#">徐志摩</a></span>
+									<span><a href="#">朱自清</a></span>
+									<span><a href="#" class="g_red">闻一多</a></span>
+									<span><a href="#">老舍</a></span>
+									<span><a href="#">巴金</a></span>
+									<span><a href="#">曹禺</a></span>
+							</li>
+						</ul>
+					</div>
+					<div style="clear:both;height:0;line-height:0;font-size:0;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="autoheight"></div>
+	<div class="layout-content-slider" id="layout-side">
+		<div class="lcs-info layout-inner">
+				<div id="box-starbar">
+					<ul class="widget-starbar g_clr" >
+						<li class="left">
+							<div class="g_clr widget-baritem">
+								<div class="category"><i class="i-tv"></i><a href="#">温故知新</a></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="splitline split"></div>
+				<div id="box-toplist2">
+					<div id="toplist2" class="g_box widget-toplist toplist-first" >
+						<div class="g_box widget-tophot2">
+						    <div class="channels g_clr">
+								<ul class="js_title">
+									<li class="channels_title channels_list option_hover">
+										<a href="#">小学</a>
+									</li>
+								</ul>
+							</div>
+							<div class="g_box widget-tophot2">
+								<div class="g_box widget-topgame container">
+									<ul class="news-content" style="text-align: center">
+										<li>
+										<span><a href="#" target="_blank" title="xxxxx">一年级</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">二年级</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">三年级</a></span>
+										</li>
+										<li>
+										<span><a href="#" target="_blank" title="xxxxx">四年级</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">五年级</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">六年级</a></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<ul class="js_title">
+									<li class="channels_title channels_list option_hover">
+										<a href="#">中学</a>
+									</li>
+								</ul>
+							</div>
+							<div class="g_box widget-tophot2">
+								<div class="g_box widget-topgame container">
+									<ul class="news-content" style="text-align: center">
+										<li>
+										<span><a href="#" target="_blank" title="xxxxx">初一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">初二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">初三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">课外</a></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<ul class="js_title">
+									<li class="channels_title channels_list option_hover">
+										<a href="#">高中</a>
+									</li>
+								</ul>
+							</div>
+							<div class="g_box widget-tophot2">
+								<div class="g_box widget-topgame container">
+									<ul class="news-content" style="text-align: center">
+										<li>
+										<span><a href="#" target="_blank" title="xxxxx">高一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">高二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">高三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">课外</a></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="splitline split"></div>
+							<div class="channels g_clr">
+								<ul class="js_title">
+									<li class="channels_title channels_list option_hover">
+										<a href="#">大学</a>
+									</li>
+								</ul>
+							</div>
+							<div class="g_box widget-tophot2">
+								<div class="g_box widget-topgame container">
+									<ul class="news-content" style="text-align: center">
+										<li>
+										<span><a href="#" target="_blank" title="xxxxx">大一</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">大二</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">大三</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span><a href="#" target="_blank" title="xxxxx">大四</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 二级实用工具开始  -->
+			<div style="height: 670px;" class="lcs-erji layout-inner" id="layout-erji">
+				<div id="box-erji">
+					<div id="box-starbar">
+						<ul class="widget-starbar g_clr" >
+							<li class="left">
+								<div class="g_clr widget-baritem">
+									<div class="category"><i class="i-tv"></i><a href="#">学而时习之</a></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="splitline split"></div>
+					<div class="box-widget-erji">
+						<dl class="widget-erji erji-first">
+							<dt><h3><a class="g_h3 g_green" href="#">经</a></h3></dt>
+							<dd class="g_clr">
+							    <span><a href="#">诗经</a></span>
+								<span><a href="#">论语</a></span>
+								<span><a href="#">仪礼</a></span>
+								<span><a href="#">中庸</a></span>
+								<span><a href="#">大学</a></span>
+								<span><a href="#">尔雅</a></span>
+								<span><a href="#">左传</a></span>
+								<span><a href="#">尚书</a></span>
+								<span><a href="#">孟子</a></span>
+								<span><a href="#">孝经</a></span>
+								<span><a href="#">周易</a></span>
+								<span><a href="#">更多</a></span>
+							</dd>
+						</dl>
+						<dl class="widget-erji erji-first">
+							<dt><h3><a class="g_h3 g_green" href="#">史</a></h3></dt>
+							<dd class="g_clr">
+							    <span><a href="#">战国策</a></span>
+							    <span><a href="#">国语</a></span>
+								<span><a href="#">史记</a></span>
+								<span><a href="#">汉书</a></span>
+								<span><a href="#">三国志</a></span>
+								<span><a href="#">晋书</a></span>
+								<span><a href="#">隋书</a></span>
+								<span><a href="#">宋史</a></span>
+								<span><a href="#">元史</a></span>
+								<span><a href="#">明史</a></span>
+								<span><a href="#">清史</a></span>
+								<span><a href="#">更多</a></span>
+								<div style="display: none">
+								<span><a href="#">旧唐书</a></span>
+								<span><a href="#">水经注</a></span>
+								<span><a href="#">北齐书</a></span>
+								<span><a href="#">北史</a></span>
+								<span><a href="#">曹子建集</a></span>
+								<span><a href="#">陈书</a></span>
+								<span><a href="#">大宋宣和遗事</a></span>
+								<span><a href="#">后汉书</a></span>
+								<span><a href="#">金史</a></span>
+								<span><a href="#">警世通言</a></span>
+								<span><a href="#">旧五代史</a></span>
+								<span><a href="#">开元天宝遗事</a></span>
+								<span><a href="#">梁书</a></span>
+								<span><a href="#">辽史</a></span>
+								<span><a href="#">洛阳伽蓝记</a></span>
+								<span><a href="#">穆天子传</a></span>
+								<span><a href="#">南齐书</a></span>
+								<span><a href="#">南史</a></span>
+								<span><a href="#">山海经</a></span>
+								<span><a href="#">史通</a></span>
+								<span><a href="#">书目答问</a></span>
+								<span><a href="#">宋书</a></span>
+								<span><a href="#">魏书</a></span>
+								<span><a href="#">文史通义</a></span>
+								<span><a href="#">新唐书</a></span>
+								<span><a href="#">新五代史</a></span>
+								<span><a href="#">醒世恒言</a></span>
+								<span><a href="#">贞观政要</a></span>
+								<span><a href="#">周书</a></span>
+								</div>
+							</dd>
+						</dl>
+						<dl class="widget-erji erji-first">
+							<dt><h3><a class="g_h3 g_green" href="#">子</a></h3></dt>
+							<dd class="g_clr">
+								<span><a href="#">三国演义</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">红楼梦</a></span>
+							    <span>&nbsp;</span>
+							    <span><a href="#">水浒传</a></span>
+							    <span>&nbsp;</span>
+							    <span><a href="#">西游记</a></span>
+							    <span>&nbsp;</span>
+							    <span><a href="#">老子</a></span>
+							    <span><a href="#">庄子</a></span>
+							    <span><a href="#">荀子</a></span>
+							    <span><a href="#">更多</a></span>
+								<div style="display: none">
+								<span><a href="#">孙子兵法</a></span>
+								<span><a href="#">墨子</a></span>
+							    <span><a href="#">茶经</a></span>
+							    <span><a href="#">棋经</a></span>
+								<span><a href="#">乐府杂录</a></span>
+								<span><a href="#">世说新语</a></span>
+								<span><a href="#">初刻拍案惊奇</a></span>
+								<span><a href="#">东京梦华录</a></span>
+								<span><a href="#">二刻拍案惊奇</a></span>
+								<span><a href="#">公孙龙子</a></span>
+								<span><a href="#">鬼谷子</a></span>
+								<span><a href="#">韩非子</a></span>
+								<span><a href="#">淮南子</a></span>
+								<span><a href="#">黄帝内经素问</a></span>
+								<span><a href="#">黄庭内景经</a></span>
+								<span><a href="#">黄庭外景经</a></span>
+								<span><a href="#">金刚经</a></span>
+								<span><a href="#">近思录</a></span>
+								<span><a href="#">九章算术</a></span>
+								<span><a href="#">聊斋志异</a></span>
+								<span><a href="#">列子</a></span>
+								<span><a href="#">林泉高致</a></span>
+								<span><a href="#">六祖坛经</a></span>
+								<span><a href="#">吕氏春秋</a></span>
+								<span><a href="#">洛阳牡丹记</a></span>
+								<span><a href="#">容斋随笔</a></span>
+								<span><a href="#">四十二章经</a></span>
+								<span><a href="#">搜神记</a></span>
+								<span><a href="#">太上感应篇</a></span>
+								<span><a href="#">武林旧事</a></span>
+								<span><a href="#">心经</a></span>
+								<span><a href="#">新书</a></span>
+								<span><a href="#">颜氏家训</a></span>
+								<span><a href="#">扬子法言</a></span>
+								<span><a href="#">阴符经</a></span>
+								<span><a href="#">尹文子</a></span>
+								<span><a href="#">游仙窟</a></span>
+								<span><a href="#">喻世明言</a></span>
+								<span><a href="#">周易参同契</a></span>
+								</div>
+							</dd>
+						</dl>
+						<dl class="widget-erji erji-first">
+							<dt><h3><a class="g_h3 g_green" href="#">集</a></h3></dt>
+							<dd class="g_clr">
+							    <span style="width:40%"><a href="#">唐诗三百首</a></span>
+								<span style="width:35%;text-align:right"><a href="#">古文观止</a></span>
+								<span style="width:25%"></span>
+								<span><a href="#">乐府诗集</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">人间词话</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">全唐诗</a></span>
+								<span><a href="#">全宋词</a></span>
+								<span><a href="#">苏轼集</a></span>
+								<span><a href="#">更多</a></span>
+								<div style="display: none">
+								<span><a href="#">陶渊明集</a></span>
+								<span><a href="#">文心雕龙</a></span>
+								<span><a href="#">楚辞</a></span>
+								<span><a href="#">窦娥冤</a></span>
+								<span><a href="#">二十四诗品</a></span>
+								<span><a href="#">绝妙好词</a></span>
+								<span><a href="#">柳宗元集</a></span>
+								<span><a href="#">六朝文絜</a></span>
+								<span><a href="#">六一诗话</a></span>
+								<span><a href="#">牡丹亭</a></span>
+								<span><a href="#">欧阳修集</a></span>
+								<span><a href="#">诗品</a></span>
+								<span><a href="#">文选</a></span>
+								<span><a href="#">西厢记</a></span>
+								<span><a href="#">玉台新咏</a></span>
+								</div>
+							</dd>
+						</dl>
+						<dl class="widget-erji erji-first">
+							<dt><h3><a class="g_h3 g_green" href="#">启蒙</a></h3></dt>
+							<dd class="g_clr">
+								<span><a href="#">声律启蒙</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">增广贤文</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">百家姓</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">三字经</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">千家诗</a></span>
+								<span>&nbsp;</span>
+								<span><a href="#">千字文</a></span>
+								<span><a href="#">更多</a></span>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="autoheight"></div>
+			</div>
+	</div><!-- 二级实用工具结束  -->
+</div>
+<div class="autoheight"></div>
+<div>
+	<div class="layout-footer">
+		<div id="box-copyright">
+			<div class="widget-copyright">
+				<p class="links">
+					<a href="#">关于本站</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a href="#">反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a href="#">一起挑错</a>
+				</p>
+				<p class="copyright">&nbsp;&nbsp;&nbsp;&nbsp;上网导航
+					<span class="gray">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+					<a href="#">京xxx证xxxxxx号<i class="g_icon i-papers"></i></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="login-div" class="popup popup-login" style="display: none; left: 355px; top: 295.5px;">
+  <div class="popup-head">
+	<a class="js_close" href="javascript:void(0);" onclick="logincolse();"></a><span class="js_title">用xx帐号登录</span>
+  </div>
+  <div class="login_left">
+  <div style="display: block;" class="err_holder" id="errHolder">请输入帐号</div>
+  <div id="login_holder">
+	  <div id="login_holder_1">
+		  <form class="pass_login_form" id="pass_login_form_0" action="#" target="pass_login_iframe_0" method="post" style="">
+			  <p class="pass_login_p pass_login_p_username" id="pass_login_p_username_0">
+				<label class="pass_login_label pass_login_label_username" id="pass_login_label_username_0" for="pass_login_username_0">帐　号</label>
+				<input class="pass_login_input pass_login_input_username login_input_err" id="pass_login_username_0" name="username" type="text">
+				<span class="pass_login_err" id="pass_login_username_0_err">请您输入帐号</span>
+				<span class="pass_login_tip" id="pass_login_username_0_tip"></span>
+			  </p>
+			  <p class="pass_login_p pass_login_p_password" id="pass_login_p_password_0">
+				<label class="pass_login_label pass_login_label_password" id="pass_login_label_password_0" for="pass_login_password_0">密　码</label>
+				<input class="pass_login_input pass_login_input_password" id="pass_login_password_0" name="password" type="password">
+				<span class="pass_login_err" id="pass_login_password_0_err"></span>
+				<span class="pass_login_tip" id="pass_login_password_0_tip"></span>
+			  </p>
+			  <p style="display: none;" class="pass_login_p pass_login_p_verifycode" id="pass_login_p_verifycode_0">
+				<label class="pass_login_label pass_login_label_verifycode" id="pass_login_label_verifycode_0" for="pass_login_verifycode_0">验证码</label>
+				<input class="pass_login_input pass_login_input_verifycode" id="pass_login_verifycode_0" name="verifycode" type="text">
+				<span class="pass_login_err" id="pass_login_verifycode_0_err"></span>
+				<span class="pass_login_tip" id="pass_login_verifycode_0_tip"></span>
+			  </p>
+			  <p style="display: none;" class="pass_login_p pass_login_p_img_verifycode" id="pass_login_p_img_verifycode_0">
+				<img src="https://passport.baidu.com/img/v2/small_blank.gif" class="pass_login_verifycode" id="pass_login_img_verifycode_0" alt="验证码图片" title="验证码图片">
+				<span class="pass_login_change_verifycode" id="pass_login_change_verifycode_0">看不清？</span>
+			  </p>
+			  <p class="pass_login_p" id="pass_login_p_generalerror_0">
+				<span class="pass_login_generalerror" id="pass_login_generalerror_0"></span>
+			  </p>
+			  <p class="pass_login_p pass_login_p_rem" id="pass_login_p_rem_0">
+				<input class="pass_login_input pass_login_input_rem" id="pass_login_rem_0" name="mem_pass" checked="checked" type="checkbox">
+				<label class="pass_login_label pass_login_label_rem" id="pass_login_label_rem_0" for="pass_login_rem_0">记住我的登录状态</label>
+			  </p>
+			  <p class="pass_login_p pass_login_p_des" id="pass_login_p_des_0">使用公用电脑请勿选择该项</p>
+			  <p class="pass_login_p pass_login_p_btn" id="pass_login_p_btn_0">
+				<input class="pass_login_input pass_login_input_submit" id="pass_login_input_submit_0" value="" type="button">
+			    <a href="#" class="pass_login_a_fgtpwd" id="pass_login_a_fgtpwd_0">忘记密码？</a>
+			  </p>
+		  </form>
+	  </div>
+	</div>
+ </div>
+ <div class="login_right">
+   <p class="reg_text">还没有xx帐号？</p>
+   <p class="reg_link">
+	 <a href="#" target="_blank" id="reg_btn"></a>
+   </p>
+   <p class="other_title">使用合作网站帐号登录</p>
+   <ul class="other_list">
+	  <li>
+		<a class="other_icon other_icon_qq" href="#">QQ帐号登录</a>
+	  </li>
+	  <li>
+		<a class="other_icon other_icon_sina" href="#">新浪微博帐号登录</a>
+	  </li>
+	  <li>
+		<a class="other_icon other_icon_renren" href="#">人人帐号登录</a>
+	  </li>
+   </ul>
+ </div>
+ </div>
+</body>
+</html>
