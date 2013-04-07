@@ -6,12 +6,6 @@
 <link rel="stylesheet" type="text/css" href="css/sitestyle.css">
 <SCRIPT type="text/javascript" src="js/jquery-1.6.1.js"></SCRIPT>
 <script>
-$(function(){  
-	$(".g_clr .groups li").hover(function(){
-	  $(this).addClass('js_khover');},function(){$(this).removeClass('js_khover');}
-    ); 
-});  
-
 function login(){
 	//$("#login-form").hide();javascript:void(0);
 	$("#login-div").show();
@@ -22,6 +16,36 @@ function logincolse(){
 	$("#login-div").hide();
 }
 </script>
+
+<script type="text/javascript">
+$(document).ready(function () { 
+	//添加到收藏夹 
+	$("#favorites").click(function () {//$里面是链接的id  
+		var ctrl = (navigator.userAgent.toLowerCase()).indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL';  
+		if (document.all) {  
+			window.external.addFavorite('http://www.baidu.com', '百度')  
+		} else if (window.sidebar) {  
+			window.sidebar.addPanel('百度', 'http://www.baidu.com', "")  
+		} else {//添加收藏的快捷键  
+			alert('添加失败\n您可以尝试通过快捷键' + ctrl + ' + D 加入到收藏夹~')  
+		}
+	})
+
+	//设置主页  
+	$("#addHomePage").click(function () {  
+		if (document.all) {//设置IE  
+			document.body.style.behavior = 'url(#default#homepage)';  
+			document.body.setHomePage('http://www.baidu.com');
+		} else {//网上可以找到设置火狐主页的代码，但是点击取消的话会有Bug，因此建议手动设置  
+			alert("设置首页失败，请手动设置！");
+		}
+	})
+
+	$(".g_clr .groups li").hover(function(){
+	  $(this).addClass('js_khover');},function(){$(this).removeClass('js_khover');}
+    );
+});
+</script>
 </head>
 <body>
 <div class="g_hf-bg layout-userbar">
@@ -30,9 +54,9 @@ function logincolse(){
 			<div class="g_fl" style="min-width:470px">
 				<ul class="quik-menu">
 					<li class="sethome-box">
-						<a class="sethome g_red" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('[url]http://www.zhuzi123.com[/url]');">设为主页</a>
+					    <a id="addHomePage" class="sethome g_red" href="#" class="hrefs">设为首页</a>|
 						<span>&nbsp;&nbsp;&nbsp;
-							<a href="http://www.hao123.com" target="_blank">加入收藏</a>
+							<a id="favorites" href="#">加入收藏</a>
 						</span>
 					</li>
 				</ul>
